@@ -1,0 +1,495 @@
+Name                 :  minio-server
+Template             :  False
+Path                 :  [datastore1] minio-server/minio-server.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  2048
+Max_Cpu_Usage        :  8016
+Max_Memory_Usage     :  2048
+Cpu_No               :  2
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  52428811623
+Uncommited_Space_Bytes:  2353291763
+UUID                 :  564dc967-cabc-a924-e845-ef688f454b58
+Annotation :  dont_delete
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  file-gateway
+Template             :  False
+Path                 :  [datastore1] file-gateway/file-gateway.vmx
+Guest                :  Other (64-bit)
+UUID                 :  52e74898-905f-0eff-2214-1743724008fb
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  otherGuest64
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  4096
+Max_Cpu_Usage        :  8016
+Max_Memory_Usage     :  4096
+Cpu_No               :  2
+Virtual_Disk_No      :  2
+Commited_Space_Bytes :  107374191084
+Uncommited_Space_Bytes:  4500730764
+UUID                 :  564d88b0-0262-97fe-1653-d0d954ea5eca
+Annotation :  dont_delete
+AWS-Appliance
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  proxy-rebuild
+Template             :  False
+Path                 :  [datastore1] proxy-rebuild/proxy-rebuild.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  52cea534-f65c-1a19-a36e-37c56de42775
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  8192
+Max_Cpu_Usage        :  8016
+Max_Memory_Usage     :  8192
+Cpu_No               :  2
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  13627302380
+Uncommited_Space_Bytes:  12400161274
+UUID                 :  564d25c0-63c0-b060-c919-9cf9cb3f3b0b
+Annotation :  dont_delete
+created by: Pranay
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  GOV-UK
+Template             :  False
+Path                 :  [datastore1] _icap_servers/GOV-UK-01/GOV-UK/GOV-UK.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  52eeaec4-a096-ba3e-0915-2d6c499cf38c
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  2048
+Max_Cpu_Usage        :  8016
+Max_Memory_Usage     :  2048
+Cpu_No               :  2
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  21784415336
+Uncommited_Space_Bytes:  12833223182
+UUID                 :  564d1d5a-b278-9a61-ace5-630adc93a02f
+Annotation :  dont_delete
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  desktop
+Template             :  False
+Path                 :  [datastore1] desktop/desktop.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  4096
+Max_Cpu_Usage        :  8016
+Max_Memory_Usage     :  4096
+Cpu_No               :  2
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  10485771608
+Uncommited_Space_Bytes:  4500775410
+UUID                 :  564dd423-d9fe-f9d3-22e2-a2bc8dc2cf92
+Annotation :  dont_delete
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  Packer-export-i-0259c38b36cbaabc2.ova
+Template             :  False
+Path                 :  [datastore1] Packer-export-i-0259c38b36cbaabc2.ova/Packer-export-i-0259c38b36cbaabc2.ova.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  52bf4027-16d6-bb65-36c5-9cded1ac2a77
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  2048
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  2048
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  8589943276
+Uncommited_Space_Bytes:  2351137240
+UUID                 :  564d6350-f354-47de-ac94-d204043ee63b
+Annotation :  dont_delete
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  Packer-export-i-07cb42cec69a8d5fa.ova
+Template             :  False
+Path                 :  [datastore1] Packer-export-i-07cb42cec69a8d5fa.ova/Packer-export-i-07cb42cec69a8d5fa.ova.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  52d7b5b7-495b-20c1-692e-10f81bf38103
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  2048
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  2048
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  8589934592
+Uncommited_Space_Bytes:  2886836696
+UUID                 :  564dd1d4-2bb0-c458-291d-c5f10b17b0bb
+Annotation :  dont_delete
+State      :  poweredOff
+VMware-tools:  toolsNotInstalled
+IP         : None
+
+Name                 :  Packer-export-i-04364bb983092f191.ova
+Template             :  False
+Path                 :  [datastore1] Packer-export-i-04364bb983092f191.ova/Packer-export-i-04364bb983092f191.ova.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  52611fd7-6a9e-c013-ba8a-a0e721b91410
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  2048
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  2048
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  8589934592
+Uncommited_Space_Bytes:  2886836696
+UUID                 :  564db9f2-07d0-5cf4-7ccf-c9393381f209
+Annotation :  dont_delete
+State      :  poweredOff
+VMware-tools:  toolsNotInstalled
+IP         : None
+
+Name                 :  icap-perf-load-generator-v0.6
+Template             :  False
+Path                 :  [datastore1] icap-perf-load-generator-v0.6/icap-perf-load-generator-v0.6.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  529240fd-41e4-1fa9-a601-9647ca9258a6
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  8192
+Max_Cpu_Usage        :  48096
+Max_Memory_Usage     :  8192
+Cpu_No               :  12
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  44079805602
+Uncommited_Space_Bytes:  74306610419
+UUID                 :  564d1d16-f350-d678-a4a3-20f683c71981
+Annotation :  dont_delete
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  proxy-rebuild-01
+Template             :  False
+Path                 :  [datastore1] proxy-rebuild-01/proxy-rebuild-01.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  5293b6f4-f2fc-bf6c-a5eb-7d5c9fe52f80
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  8192
+Max_Cpu_Usage        :  8016
+Max_Memory_Usage     :  8192
+Cpu_No               :  2
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  13627302380
+Uncommited_Space_Bytes:  12400161277
+UUID                 :  564de02d-0b45-d9d9-aa99-85ce0ff747ff
+Annotation :  dont_delete
+created by: Pranay
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  test-delete-1
+Template             :  False
+Path                 :  [datastore1] test-delete-1/test-delete-1.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  52a1b4aa-9e7c-abfb-24a1-672080fbc66a
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  1024
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  1024
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  8684
+Uncommited_Space_Bytes:  18509152735
+UUID                 :  564df6f8-4db3-aa92-0294-367d8b63df71
+Annotation :  delete_me
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  test-delete-2
+Template             :  False
+Path                 :  [datastore1] test-delete-2/test-delete-1.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  52a1b4aa-9e7c-abfb-24a1-672080fbc66a
+Boot_Time            :  2021-01-07 10:06:23.024797+00:00
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  test1
+Memory_Size_MB       :  1024
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  1024
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  4012909036
+Uncommited_Space_Bytes:  14324597292
+UUID                 :  564dd403-2729-caea-aa7a-30c8222b9d26
+Annotation :  dont_delete
+State      :  poweredOn
+VMware-tools:  toolsOk
+IP         : None
+
+Name                 :  test-delete-3
+Template             :  False
+Path                 :  [datastore1] test-delete-3/test-delete-1.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  52a1b4aa-9e7c-abfb-24a1-672080fbc66a
+Boot_Time            :  2021-01-07 10:06:49.772564+00:00
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  test1
+Memory_Size_MB       :  1024
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  1024
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  4012909036
+Uncommited_Space_Bytes:  14324597292
+UUID                 :  564dacce-1a52-5ca8-b648-274b44585d9d
+Annotation :  dont_delete
+State      :  poweredOn
+VMware-tools:  toolsOk
+IP         : None
+
+Name                 :  test-delete-4
+Template             :  False
+Path                 :  [datastore1] test-delete-4/test-delete-1.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  52a1b4aa-9e7c-abfb-24a1-672080fbc66a
+Boot_Time            :  2021-01-07 10:07:33.443291+00:00
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  test1
+Memory_Size_MB       :  1024
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  1024
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  4012909036
+Uncommited_Space_Bytes:  14324597292
+UUID                 :  564dc997-5428-46ed-e75b-9b1ca522c599
+Annotation :  dont_delete
+State      :  poweredOn
+VMware-tools:  toolsOk
+IP         : None
+
+Name                 :  OPNsense
+Template             :  False
+Path                 :  [datastore1] OPNsense/OPNsense.vmx
+Guest                :  FreeBSD 12 or later versions (64-bit)
+UUID                 :  521d330d-04c0-11d5-be0e-7818cfbb2407
+Boot_Time            :  2021-01-07 13:36:24.248327+00:00
+Connection_State     :  connected
+Guest_ID             :  freebsd12_64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  2048
+Max_Cpu_Usage        :  8016
+Max_Memory_Usage     :  2048
+Cpu_No               :  2
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  23708312044
+Uncommited_Space_Bytes:  448
+UUID                 :  564d29f0-0330-cbe9-ff62-322e2a8e89b0
+Annotation :  dont_delete
+State      :  poweredOn
+VMware-tools:  toolsNotInstalled
+IP         : None
+
+Name                 :  centos-testing
+Template             :  False
+Path                 :  [datastore1] centos-testing/centos-testing.vmx
+Guest                :  CentOS 8 (64-bit)
+UUID                 :  522fb36e-4a08-5a8f-7812-1b0d1ceb535b
+Boot_Time            :  2021-01-07 12:46:35.839761+00:00
+Connection_State     :  connected
+Guest_ID             :  centos8_64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  localhost.localdomain
+Memory_Size_MB       :  2048
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  2048
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  19411509752
+Uncommited_Space_Bytes:  454
+UUID                 :  564de62b-3ba3-d95e-e043-7c3c3835c472
+Annotation :  owner: Shereen
+status: in use QA
+purpose: CentOS used for testing installation doc
+IP: 91.109.25.76
+State      :  poweredOn
+VMware-tools:  toolsOk
+IP         :  91.109.25.76
+
+Name                 :  TestInstallation
+Template             :  False
+Path                 :  [datastore1] TestInstallation/TestInstallation.vmx
+Guest                :  CentOS 8 (64-bit)
+UUID                 :  52de03ee-c829-7e4f-36e8-f5ec021d408a
+Boot_Time            :  2021-01-07 20:44:42.339006+00:00
+Connection_State     :  connected
+Guest_ID             :  centos8_64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  localhost.localdomain
+Memory_Size_MB       :  2048
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  2048
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  2231640568
+Uncommited_Space_Bytes:  17179869666
+UUID                 :  564d403b-69bb-ef7e-07a2-e064461cea9f
+Annotation :  owner: Marija
+status: in use QA
+purpose: CentOS used for testing installation doc
+IP: 91.109.25.81
+State      :  poweredOn
+VMware-tools:  toolsOk
+IP         :  91.109.25.81
+
+Name                 :  ab-test-vm
+Template             :  False
+Path                 :  [datastore1] ab-test-vm/ab-test-vm.vmx
+Guest                :  Ubuntu Linux (32-bit)
+UUID                 :  52f5de58-60e8-421a-655c-3c63ddabb1c9
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntuGuest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  512
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  512
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  17179877868
+Uncommited_Space_Bytes:  792412610
+UUID                 :  564dafb4-ddee-654f-1c2e-856fc15e3c6d
+Annotation :  ab-test-start
+State      :  poweredOff
+VMware-tools:  toolsNotInstalled
+IP         : None
+
+Name                 :  test_Photon_OS
+Template             :  False
+Path                 :  [datastore1] Photon OS/Photon OS.vmx
+Guest                :  Other 3.x Linux (64-bit)
+UUID                 :  526b10ac-4301-c378-b6b0-f41260706364
+Boot_Time            :  2021-01-11 12:22:40.477732+00:00
+Connection_State     :  connected
+Guest_ID             :  other3xLinux64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  photon-machine
+Memory_Size_MB       :  2048
+Max_Cpu_Usage        :  4008
+Max_Memory_Usage     :  2048
+Cpu_No               :  1
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  19411247596
+Uncommited_Space_Bytes:  481
+UUID                 :  564d7873-bbe4-99b5-339a-0af8d2481e6c
+Annotation :  This OVA provides a minimal installed profile of PhotonOS.
+
+   Default password for root user is changeme. However user will be prompted to change the password during first login.
+
+        
+State      :  poweredOn
+VMware-tools:  toolsOk
+IP         :  fe80::20c:29ff:fe48:1e6c
+
+Name                 :  icap-performance-traffic-generator
+Template             :  False
+Path                 :  [datastore1] icap-performance-traffic-generator/icap-performance-traffic-generator.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  5243acd1-431e-faa3-a00a-a6c03ee8fa1f
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  4096
+Max_Cpu_Usage        :  8016
+Max_Memory_Usage     :  4096
+Cpu_No               :  2
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  8108152049
+Uncommited_Space_Bytes:  50081280550
+UUID                 :  564d18f6-f3c5-c84b-caae-d65f5e002280
+Annotation :  dont_delete
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
+Name                 :  logtrixia
+Template             :  False
+Path                 :  [datastore1] logtrixia/logtrixia.vmx
+Guest                :  Ubuntu Linux (64-bit)
+UUID                 :  
+Boot_Time            :  None
+Connection_State     :  connected
+Guest_ID             :  ubuntu64Guest
+Host                 :  'vim.HostSystem:ha-host'
+Host_Name            :  None
+Memory_Size_MB       :  8192
+Max_Cpu_Usage        :  8016
+Max_Memory_Usage     :  8192
+Cpu_No               :  2
+Virtual_Disk_No      :  1
+Commited_Space_Bytes :  52428811614
+Uncommited_Space_Bytes:  8782729715
+UUID                 :  
+State      :  poweredOff
+VMware-tools:  toolsNotRunning
+IP         : None
+
