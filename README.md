@@ -20,3 +20,5 @@ $ cd k8-vmware-visualisation
 
 $ ./upwork-devs/Lwasampijja-Baker/getVMs.py > file.json
 ```
+
+#### Note: Set login credentials in getVMs.py Line 13
