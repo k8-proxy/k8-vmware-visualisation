@@ -1,119 +1,72 @@
-#!/usr/bin/env python
-
-"""
-Python program for listing the vms on an ESX / vCenter host
-"""
-import re
-import atexit
-
-from pyVim import connect
-from pyVmomi import vmodl
+#! /usr/bin/env python
+from pyVim.connect import SmartConnect, SmartConnectNoSSL, Disconnect
 from pyVmomi import vim
+import json
 
-import tools.cli as cli
-
-
-def get_args():
-    parser = cli.build_arg_parser()
-    parser.add_argument('-f', '--find',
-                        required=False,
-                        action='store',
-                        help='String to match VM names')
-    args = parser.parse_args()
-
-    return cli.prompt_for_password(args)
+from pyVim.connect import SmartConnect
+from pyVmomi import vim
+import ssl
 
 
-def print_vm_info(virtual_machine):
-    """
-    Print information for a particular virtual machine or recurse into a
-    folder with depth protection
-    """
-    summary = virtual_machine.summary
-    print("Name                 : ", summary.config.name)
-    print("Template             : ", summary.config.template)
-    print("Path                 : ", summary.config.vmPathName)
-    print("Guest                : ", summary.config.guestFullName)
-    print("UUID                 : ", summary.config.instanceUuid)
-    print("Boot_Time            : ", summary.runtime.bootTime)
-    print("Connection_State     : ", summary.runtime.connectionState)
-    print("Guest_ID             : ", summary.config.guestId)
-    print("Host                 : ", summary.runtime.host)
-    print("Host_Name            : ", summary.guest.hostName)
-    print("Memory_Size_MB       : ", summary.config.memorySizeMB)
-    print("Max_Cpu_Usage        : ", summary.runtime.maxCpuUsage)
-    print("Max_Memory_Usage     : ", summary.runtime.maxMemoryUsage)
-    print("Cpu_No               : ", summary.config.numCpu)
-    print("Virtual_Disk_No      : ", summary.config.numVirtualDisks)
-    print("Commited_Space_Bytes : ", summary.storage.committed)
-    print("Uncommited_Space_Bytes: ", summary.storage.uncommitted)
-    print("UUID                 : ", summary.config.uuid)
-    annotation = summary.config.annotation
-    if annotation:
-        print("Annotation : ", annotation)
-    print("State      : ", summary.runtime.powerState)
-    if summary.guest is not None:
-        ip_address = summary.guest.ipAddress
-        tools_version = summary.guest.toolsStatus
-        if tools_version is not None:
-            print("VMware-tools: ", tools_version)
-        else:
-            print("Vmware-tools: None")
-        if ip_address:
-            print("IP         : ", ip_address)
-        else:
-            print("IP         : None")
-    if summary.runtime.question is not None:
-        print("Question  : ", summary.runtime.question.text)
-    print("")
+s=ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+s.verify_mode=ssl.CERT_NONE
+si= SmartConnectNoSSL(host="HOST", user="USER", pwd="PASSWORD")
+content=si.content
 
+# Method that populates objects of type vimtype
+def get_all_objs(content, vimtype):
+        obj = {}
+        container = content.viewManager.CreateContainerView(content.rootFolder, vimtype, True)
+        for managed_object_ref in container.view:
+                obj.update({managed_object_ref: managed_object_ref.name})
+        return obj
 
-def main():
-    """
-    Simple command-line program for listing the virtual machines on a system.
-    """
+#Calling above method
+getAllVms=get_all_objs(content, [vim.VirtualMachine])
 
-    args = get_args()
-
-    try:
-        if args.disable_ssl_verification:
-            service_instance = connect.SmartConnectNoSSL(host=args.host,
-                                                         user=args.user,
-                                                         pwd=args.password,
-                                                         port=int(args.port))
-        else:
-            service_instance = connect.SmartConnect(host=args.host,
-                                                    user=args.user,
-                                                    pwd=args.password,
-                                                    port=int(args.port))
-
-        atexit.register(connect.Disconnect, service_instance)
-
-        content = service_instance.RetrieveContent()
-
-        container = content.rootFolder  # starting point to look into
-        viewType = [vim.VirtualMachine]  # object types to look for
-        recursive = True  # whether we should look into it recursively
-        containerView = content.viewManager.CreateContainerView(
-            container, viewType, recursive)
-
-        children = containerView.view
-        if args.find is not None:
-            pat = re.compile(args.find, re.IGNORECASE)
-        for child in children:
-            if args.find is None:
-                print_vm_info(child)
-            else:
-                if pat.search(child.summary.config.name) is not None:
-                    print_vm_info(child)
-
-    except vmodl.MethodFault as error:
-        print("Caught vmodl fault : " + error.msg)
-        return -1
-
-    return 0
-
-
-# Start program
-if __name__ == "__main__":
-    main()
+print('[')
+#Iterating each vm object and printing its name
+for vm in getAllVms:
+        print('{')
+        print (' "Name":', '"{}",'.format(vm.summary.config.name))
+        print (' "PowerState":', '"{}",'.format(vm.summary.runtime.powerState))
+        print (' "Notes":', '"{}",'.format(vm.summary.config.annotation))
+        print (' "Guest":', '"{}"' .format(vm.summary.config.guestFullName))
+        print (' "NumCpu":', '"{}",'.format(vm.summary.config.numCpu))
+        #print (' "CoresPerSocket":', '"{}",'.format(vm.summary.))
+        print (' "MemoryMB":', '"{}",'.format(vm.summary.config.memorySizeMB))
+        #print (' "MemoryGB":', '"{}",'.format(vm.summary.config.memorySizeGB))
+        #print (' "VMHostId":', '"{}",'.format(vm.summary.runtime.VMHostId))
+        print (' "VMHost":', '"{}",'.format(vm.summary.runtime.host))
+        #print (' "VApp":', '"{}",'.format(vm.summary.))
+        #print (' "FolderId":', '"{}",'.format(vm.summary.))
+        print (' "Folder":', '"{}",'.format(vm.summary.config.vmPathName))
+        #print (' "ResourcePoolId":', '"{}",'.format(vm.summary.))
+        #print (' "ResourcePool":', '"{}",'.format(vm.summary.))
+        #print (' "HARestartPriority":', '"{}",'.format(vm.summary.))
+        #print (' "HAIsolationResponse":', '"{}",'.format(vm.summary.))
+        #print (' "DrsAutomationLevel":', '"{}",'.format(vm.summary.))
+        #print (' "VMSwapfilePolicy":', '"{}",'.format(vm.summary.))
+        #print (' "VMResourceConfiguration":', '"{}",'.format(vm.summary.))
+        #print (' "Version":', '"{}",'.format(vm.summary.config.Version))
+        print (' "HardwareVersion":', '"{}",'.format(vm.summary.config.hwVersion))
+        #print (' "PersistentId":', '"{}",'.format(vm.summary.))
+        print (' "GuestId":', '"{}",'.format(vm.summary.config.guestId))
+        print (' "CommitedSpace":', '"{}",'.format(vm.summary.storage.uncommitted))
+        print (' "UNCommitedSpace":', '"{}",'.format(vm.summary.storage.committed))
+        #print (' "DatastoreIdList":', '"{}",'.format(vm.summary.))
+        print (' "CreateDate":', '"{}",'.format(vm.summary.storage.timestamp))
+        #print (' "SEVEnabled":', '"{}",'.format(vm.summary.))
+        #print (' "ExtensionData":', '"{}",'.format(vm.summary.))
+        #print (' "CustomFields":', '"{}",'.format(vm.CustomFieldsManager.Value))
+        print (' "Id":', '"{}",'.format(vm.summary.config.uuid))
+        print (' "Uid":', '"{}",'.format(vm.summary.config.instanceUuid))
+        print (' "BootTime":', '"{}",'.format(vm.summary.runtime.bootTime))
+        print (' "NumVirtualDisks":', '"{}",'.format(vm.summary.config.numVirtualDisks))
+        print (' "IPAddress":', '"{}",'.format(vm.summary.guest.ipAddress))
+        print (' "MaxCpuUsage":', '"{}",'.format(vm.summary.runtime.maxCpuUsage))
+        print (' "MaxMemoryUsage":', '"{}",'.format(vm.summary.runtime.maxMemoryUsage))
+        print (' "ConnectionState":', '"{}"'.format(vm.summary.runtime.connectionState))
+        print('},')
+        
+print(']')
