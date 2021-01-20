@@ -18,5 +18,7 @@ $ git clone https://github.com/k8-proxy/k8-vmware-visualisation
 
 $ cd k8-vmware-visualisation
 
-$ ./upwork-devs/Lwasampijja-Baker/getVMs.py -S -s HOST -u USER -p PASSWORD > file.json
+$ python ./upwork-devs/Lwasampijja-Baker/getVMs.py > file.json
 ```
+
+#### Note: Set login credentials in getVMs.py Line 13
