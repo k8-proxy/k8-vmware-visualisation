@@ -8,65 +8,54 @@ from pyVmomi import vim
 import ssl
 
 
-s=ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-s.verify_mode=ssl.CERT_NONE
-si= SmartConnectNoSSL(host="HOST", user="USER", pwd="PASSWORD")
-content=si.content
+s                   =   ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+s.verify_mode       =   ssl.CERT_NONE
+si                  =   SmartConnectNoSSL(host="HOST", user="USER", pwd="PASSWORD")
+content             =   si.content
 
 # Method that populates objects of type vimtype
 def get_all_objs(content, vimtype):
-        obj = {}
-        container = content.viewManager.CreateContainerView(content.rootFolder, vimtype, True)
+        obj         = {}
+        container   = content.viewManager.CreateContainerView(content.rootFolder, vimtype, True)
+
         for managed_object_ref in container.view:
                 obj.update({managed_object_ref: managed_object_ref.name})
         return obj
 
 #Calling above method
-getAllVms=get_all_objs(content, [vim.VirtualMachine])
+getAllVms           =   get_all_objs(content, [vim.VirtualMachine])
 
-print('[')
+fileName            =   'machines' + '.json'
+data                =   []
+
 #Iterating each vm object and printing its name
 for vm in getAllVms:
-        print('{')
-        print (' "Name":', '"{}",'.format(vm.summary.config.name))
-        print (' "PowerState":', '"{}",'.format(vm.summary.runtime.powerState))
-        print (' "Notes":', '"{}",'.format(vm.summary.config.annotation))
-        print (' "Guest":', '"{}"' .format(vm.summary.config.guestFullName))
-        print (' "NumCpu":', '"{}",'.format(vm.summary.config.numCpu))
-        #print (' "CoresPerSocket":', '"{}",'.format(vm.summary.))
-        print (' "MemoryMB":', '"{}",'.format(vm.summary.config.memorySizeMB))
-        #print (' "MemoryGB":', '"{}",'.format(vm.summary.config.memorySizeGB))
-        #print (' "VMHostId":', '"{}",'.format(vm.summary.runtime.VMHostId))
-        print (' "VMHost":', '"{}",'.format(vm.summary.runtime.host))
-        #print (' "VApp":', '"{}",'.format(vm.summary.))
-        #print (' "FolderId":', '"{}",'.format(vm.summary.))
-        print (' "Folder":', '"{}",'.format(vm.summary.config.vmPathName))
-        #print (' "ResourcePoolId":', '"{}",'.format(vm.summary.))
-        #print (' "ResourcePool":', '"{}",'.format(vm.summary.))
-        #print (' "HARestartPriority":', '"{}",'.format(vm.summary.))
-        #print (' "HAIsolationResponse":', '"{}",'.format(vm.summary.))
-        #print (' "DrsAutomationLevel":', '"{}",'.format(vm.summary.))
-        #print (' "VMSwapfilePolicy":', '"{}",'.format(vm.summary.))
-        #print (' "VMResourceConfiguration":', '"{}",'.format(vm.summary.))
-        #print (' "Version":', '"{}",'.format(vm.summary.config.Version))
-        print (' "HardwareVersion":', '"{}",'.format(vm.summary.config.hwVersion))
-        #print (' "PersistentId":', '"{}",'.format(vm.summary.))
-        print (' "GuestId":', '"{}",'.format(vm.summary.config.guestId))
-        print (' "CommitedSpace":', '"{}",'.format(vm.summary.storage.uncommitted))
-        print (' "UNCommitedSpace":', '"{}",'.format(vm.summary.storage.committed))
-        #print (' "DatastoreIdList":', '"{}",'.format(vm.summary.))
-        print (' "CreateDate":', '"{}",'.format(vm.summary.storage.timestamp))
-        #print (' "SEVEnabled":', '"{}",'.format(vm.summary.))
-        #print (' "ExtensionData":', '"{}",'.format(vm.summary.))
-        #print (' "CustomFields":', '"{}",'.format(vm.CustomFieldsManager.Value))
-        print (' "Id":', '"{}",'.format(vm.summary.config.uuid))
-        print (' "Uid":', '"{}",'.format(vm.summary.config.instanceUuid))
-        print (' "BootTime":', '"{}",'.format(vm.summary.runtime.bootTime))
-        print (' "NumVirtualDisks":', '"{}",'.format(vm.summary.config.numVirtualDisks))
-        print (' "IPAddress":', '"{}",'.format(vm.summary.guest.ipAddress))
-        print (' "MaxCpuUsage":', '"{}",'.format(vm.summary.runtime.maxCpuUsage))
-        print (' "MaxMemoryUsage":', '"{}",'.format(vm.summary.runtime.maxMemoryUsage))
-        print (' "ConnectionState":', '"{}"'.format(vm.summary.runtime.connectionState))
-        print('},')
-        
-print(']')
+        VMData  = {}
+        VMData['Name']                  = vm.summary.config.name
+        VMData['PowerState']            = vm.summary.runtime.powerState
+        VMData['Notes']                 = vm.summary.config.annotation
+        VMData['Guest']                 = vm.summary.config.name
+        VMData['NumCpu']                = vm.summary.config.numCpu
+        VMData['MemoryMB']              = vm.summary.config.memorySizeMB
+        VMData['VMHost']                = vm.summary.runtime.host
+        VMData['Folder']                = vm.summary.config.vmPathName
+        VMData['HardwareVersion']       = vm.summary.config.hwVersion
+        VMData['GuestId']               = vm.summary.config.guestId
+        VMData['CommitedSpace']         = vm.summary.storage.committed
+        VMData['UNCommitedSpace']       = vm.summary.storage.committed
+        VMData['CreateDate']            = vm.summary.storage.timestamp
+        VMData['Id']                    = vm.summary.config.uuid
+        VMData['Uid']                   = vm.summary.config.instanceUuid
+        VMData['BootTime']              = vm.summary.runtime.bootTime
+        VMData['NumVirtualDisks']       = vm.summary.config.numVirtualDisks
+        VMData['IPAddress']             = vm.summary.guest.ipAddress
+        VMData['MaxCpuUsage']           = vm.summary.runtime.maxCpuUsage
+        VMData['MaxMemoryUsage']        = vm.summary.runtime.maxMemoryUsage
+        VMData['ConnectionState']       = vm.summary.runtime.connectionState
+
+        data.append(VMData)
+
+# Writing the data to a JSON file
+with open(fileName, 'w') as json_file:
+    makejson = json.dump(data, json_file, indent=4, sort_keys=True, default=str)
+print('JSON file Created Successfully')
