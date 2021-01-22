@@ -1,2 +1,5 @@
 .ipynb_checkpoints
 modules/__pycache__
+modules/credentials.json
+token.pickle
+
