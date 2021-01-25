@@ -1,0 +1,19 @@
+service: GetGithubData
+
+provider:
+  name: aws
+  runtime: python3.7
+  lambdaHashingVersion: 20201221
+  region: us-east-2
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+
+functions:
+  lambda_handler:
+    handler: lambda/handler.lambda_handler
+    timeout: 360
