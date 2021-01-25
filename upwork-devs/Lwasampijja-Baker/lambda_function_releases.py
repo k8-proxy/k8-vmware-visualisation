@@ -6,7 +6,7 @@ urllib3.disable_warnings()
 
 # Declaring variables
 http                        =  urllib3.PoolManager()
-my_headers                  = {'User-Agent': 'Baker371'}
+my_headers                  = {'User-Agent': 'GITHUBUSER'}
 git_token                   = 'GITHUBTOKEN'
 git_headers                 = {'Authorization': f'token {git_token}', 'User-Agent': 'GITHUBUSER'}
 repo_url                    = 'https://api.github.com/users/k8-proxy/repos'
