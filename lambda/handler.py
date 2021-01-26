@@ -1,13 +1,14 @@
 import boto3
 import urllib3
 import json
+import os
 
 urllib3.disable_warnings()
 
 # Declaring variables
 http                        =  urllib3.PoolManager()
 my_headers                  = {'User-Agent': 'Baker371'}
-git_token                   = ${{ secrets.GIT_TOKEN }}
+git_token                   = os.getenv('GIT_TOKEN')
 git_headers                 = {'Authorization': f'token {git_token}', 'User-Agent': 'Baker371'}
 repo_url                    = 'https://api.github.com/users/k8-proxy/repos'
 bucket                      = 'wmware-data-visualisation'
@@ -37,7 +38,7 @@ def lambda_handler(event, context):
       s3.put_object(Bucket=bucket, Key=fileName, Body=uploads)
 
 
-     return {
-        "message": "JSON file succesfully created and uploaded to S3",
-        "event": event
-    }
+    return {
+      "message": "JSON file succesfully created and uploaded to S3",
+      "event": event
+      }
