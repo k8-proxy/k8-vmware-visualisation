@@ -16,4 +16,8 @@ package:
 functions:
   lambda_handler:
     handler: lambda/handler.lambda_handler
+    events:
+      - http:
+          path: webhook
+          method: get
     timeout: 360
