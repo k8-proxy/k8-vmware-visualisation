@@ -21,9 +21,8 @@ functions:
           path: webhook
           method: get
     timeout: 360
-    
--  Effect: "Allow"
-   Action:
+    Effect: "Allow"
+    Action:
      - "cloudformation:DescribeStackResource"
-   Resource: "*"
+    Resource: "*"
     
