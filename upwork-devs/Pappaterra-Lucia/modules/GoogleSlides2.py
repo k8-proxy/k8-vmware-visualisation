@@ -1,6 +1,7 @@
 import pandas as pd
 from googleapiclient.discovery import build
 from  modules.Credentials import check_credentials
+from modules.GoogleSheets2 import rgb
 
 
 class GSlide():
@@ -41,8 +42,8 @@ class GSlide():
     def element_create_table_request(self, slide_id, rows=3, cols=3, x_pos=200, y_pos=200, width=100, height=100, objectId=None):
         return { "createTable": { "objectId"         : objectId,
                                   "elementProperties": { "pageObjectId": slide_id,
-                                                         "size"        : {  "width": {"magnitude":  width, "unit": "PT"},
-                                                                            "height": {"magnitude": height,"unit": "PT"}},
+                                                         "size"        : { "width": {"magnitude":  width, "unit": "PT"},
+                                                                           "height": {"magnitude": height,"unit": "PT"}},
                                                          "transform"   : { "scaleX": 1, "scaleY": 1, "translateX": x_pos, "translateY": y_pos,"unit": "PT" }},
                                   "rows"             : rows                         ,
                                   "columns"          : cols                        }}
@@ -177,13 +178,13 @@ class GSlide():
         return self.batch_update(requests)
 
 
-    def element_set_text_style_requests__for_title(self, shape_id, font_size, blue=0.5, green=0.5, red=0.5):
+    def element_set_text_style_requests__for_title(self, shape_id, font_size, color='gray0'):
+        r, g, b = rgb(color)
         style = {  'bold'            : True,
                    'fontFamily'      : 'Avenir',
                    'fontSize'        : { 'magnitude'  : font_size, 'unit': 'PT' },
-                   'foregroundColor' : {'opaqueColor': {'rgbColor': {'blue': blue, 'green': green, 'red': red}}}}
+                   'foregroundColor' : {'opaqueColor': {'rgbColor': {'blue': b, 'green': g, 'red': r}}}}
         fields   = 'bold,fontFamily,fontSize,foregroundColor'
-
 
         return self.element_set_text_style_requests(shape_id, style, fields)
 
@@ -296,7 +297,47 @@ class GSlide():
         return list(slides_meta.keys())
 
 
-    def add_slide_with_table_from_df(self, slide_id, title, data):
+    def cell_background_color_request(self, table_id, row, col, color):
+        r, g, b = rgb(color)
+        return {'updateTableCellProperties': 
+                    { 'objectId': table_id,
+                      'tableRange': {
+                          'location': {
+                              'rowIndex': row,
+                              'columnIndex': col
+                                       },
+                          'rowSpan': 1,
+                          'columnSpan': 1
+                                    },
+                      'tableCellProperties': {
+                          'tableCellBackgroundFill': {
+                              'solidFill': {
+                                  'color': {
+                                      'rgbColor': {
+                                          'red': r,
+                                          'green': g,
+                                          'blue': b,
+                                      }
+                                  }
+                              }
+                          }
+                      },
+                      'fields': 'tableCellBackgroundFill'
+                    }
+               }
+
+
+    def set_cell_background_color(self, table_id, row, col, color):
+        requests = [self.cell_background_color_request(table_id, row, col, color)]
+        self.batch_update(requests)
+
+
+    def set_multiple_cells_background_color(self, table_id, start_row, end_row, start_col, end_col, color):
+        requests = [self.cell_background_color_request(table_id, row, col, color) for row in range(start_row, end_row) for col in range(start_col, end_col)]
+        self.batch_update(requests)
+
+
+    def add_slide_with_table_from_df(self, slide_id, title, data, title_size=26, title_color='gray0', headers_color='gray', cells_color=None):
 
         # check if there already exist a slide with that id
         slides_ids = self.get_slides_ids()
@@ -311,10 +352,13 @@ class GSlide():
             rows = len(data) + 1
             cols = len(data.columns)
 
+            if len(title) > 45:
+                title_size -= 4
+
             requests = [self.slide_create_request(slide_id),
                         self.element_create_shape_request(slide_id, 10, 10, 500, 50, title_id),
                         self.element_insert_text_request(title_id, title),
-                        self.element_set_text_style_requests__for_title(title_id, 26),
+                        self.element_set_text_style_requests__for_title(title_id, title_size, title_color),
                         self.element_create_table_request(slide_id, rows, cols, 12, 60, 700, 270, table_id)]
 
             for index, header in enumerate(headers):
@@ -342,4 +386,58 @@ class GSlide():
                         requests.append(self.element_set_table_cell_size_bold_requests(table_id, i+1, index, s, False))
 
             self.batch_update(requests)
+
+            # Color table headers
+            self.set_multiple_cells_background_color(table_id, start_row=0, end_row=1, start_col=0, end_col=len(headers), color=headers_color)
+
+            # Color table cells
+            if cells_color is not None: 
+                self.set_multiple_cells_background_color(table_id, start_row=1, end_row=rows, start_col=0, end_col=len(headers), color=cells_color)
+
+
+    ############################# MASTER SLIDES CHANGES: ####################################################################
+    def slide_background_image_request(self, page_id, image_url):
+         return {'updatePageProperties': {
+                     'objectId': page_id,
+                     'pageProperties': {
+                     'pageBackgroundFill': {
+                         'stretchedPictureFill': {
+                             'contentUrl': image_url
+                         }
+                      }
+                      },
+                      'fields': 'pageBackgroundFill'
+                  }}
+
+
+    def set_slide_background_image(self, page_id, image_url):
+        requests = [self.slide_background_image_request(page_id, image_url)]
+        self.batch_update(requests)
+
+
+    def slide_background_color_request(self, page_id, color):
+        r, g, b = rgb(color)
+        return {'updatePageProperties': {
+                    'objectId': page_id,
+                    'pageProperties': {
+                        'pageBackgroundFill': {
+                            'solidFill': {
+                                'color': {
+                                    'rgbColor': {
+                                        'red': r,
+                                        'green': g,
+                                        'blue': b,
+                                    }
+                                }
+                             }
+                         }
+                     },
+                    'fields': 'pageBackgroundFill'
+               }}
+
+
+    def set_slide_background_color(self, page_id, color):
+        requests = [self.slide_background_color_request(page_id, color)]
+        self.batch_update(requests)
+    #########################################################################################################################
 

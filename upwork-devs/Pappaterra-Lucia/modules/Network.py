@@ -1,6 +1,7 @@
-# AUXILIARY FUNCTIONS
-
 import json
+import textwrap
+import matplotlib.pyplot as plt
+from matplotlib.colors import rgb2hex
 
 BLUE = "#99CDFF"
 YELLOW = "#FEEBA7"
@@ -33,6 +34,22 @@ class Network():
 		self.edgesLabelsId = {} # dict with edge Labels by edge id key
 
 
+	def ids_from_label(self, label):
+		return self.nodesIds[label] 
+
+
+	def id_from_label(self, label):
+		return self.nodesIds[label][0]
+
+
+	def label_from_id(self, node_id):
+		return self.nodesLabels[node_id] 
+
+
+	def get_labels(self):
+		return list(self.nodesIds.keys())
+
+
 	def add_node(self, label="", group="default", x=-950, y=-950, color="#99CDFF", shape="default", fixed=False, physics=True, repeat_nodes=False):
 		"""
 		Add nodes to the network
@@ -50,9 +67,7 @@ class Network():
 				d["shape"] = shape
 		else:
 			d["group"] = group
-
 			d = self.groupSettings(d, group, x, y, color, shape)
-
 
 		if repeat_nodes == False:
 			if label not in self.nodesIds.keys():
@@ -78,7 +93,7 @@ class Network():
 
 	def add_edge(self, a, b, label="", color="black", length=100, arrows="to"):
 		"""
-		Add edges to the network. If there are more than one edge between "a" and "b",
+		Add edges to the network. a and b are the nodes ids. If there are more than one edge between "a" and "b",
 		use different colors for the arrows.
 		"""
 
@@ -107,9 +122,7 @@ class Network():
 
 
 	def save_to_json(self, path):
-
 		nodes_edges = {"nodes": self.nodes, "edges": self.edges}
-
 		with open(path, 'w') as fp:
 			json.dump(nodes_edges, fp)
 
@@ -130,6 +143,10 @@ def wrap_by_word(s, n):
 	for i in range(0, len(a), n):
 		ret += ' '.join(a[i:i+n]) + '\n'
 	return ret
+
+
+def wrap_by_char(s, n):
+	return '\n'.join(l for line in s.splitlines() for l in textwrap.wrap(line, width=n))
 
 
 def is_unique(s):
@@ -192,3 +209,23 @@ def group_settings_VM(d, group, x, y, color, shape="default"):
 		d["level"] = 7
 
 	return d
+
+
+def group_settings_R(d, group, x=None, y=None, color=None, shape=None):
+
+	if group == "Repo":
+		d["color"] = rgb2hex(plt.cm.Pastel1(0))
+		d["shape"] = 'box'
+
+	elif group == "Tag_Id":
+		d["color"] = rgb2hex(plt.cm.Pastel1(1))
+
+	elif group == "Description":
+		d["color"] = rgb2hex(plt.cm.Pastel1(5))
+		d["shape"] = 'box'
+
+	d["fixed"] = False
+	d["physics"] = True
+
+	return d
+
