@@ -3,7 +3,7 @@ version = 0.1
 [default.deploy]
 [default.deploy.parameters]
 stack_name = "sam-app"
-s3_bucket = "vmware-data"
+s3_bucket = "wmware-data-visualisation"
 s3_prefix = "sam-app"
 region = "us-east-2"
 confirm_changeset = false
