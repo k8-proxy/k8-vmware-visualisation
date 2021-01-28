@@ -5,7 +5,7 @@ version = 0.1
 stack_name = "sam-app"
 s3_bucket = "vmware-data"
 s3_prefix = "sam-app"
-region = "us-east-1"
+region = "us-east-2"
 confirm_changeset = false
 capabilities = "CAPABILITY_IAM"
 
