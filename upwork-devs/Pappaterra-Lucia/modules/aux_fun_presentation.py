@@ -45,11 +45,18 @@ def create_presentation(df, file_name='Untitled', gdrive=gdrive):
 	for slide_id in slides_ids[:]:
 		gslide.slide_delete(slide_id)
 
+	# MASTER SLIDES
+	# Add Glasswall logo
+	gslide.element_create_image(page_id='p12', image_url='https://i.ibb.co/LPX6FKv/glasswall-logo2.png', x_pos=610, y_pos=-20, width=100, height=100)
+	# Add background color
+	#gslide.set_slide_background_color(page_id='p12', color='pale-blue')
+
 	requests = []
 	k0 = 0
 	step = 3
 	for k in range(step, len(df)+step, step):
 		slide_id = '0000' + str(k)
+		# Add table
 		gslide.add_slide_with_table_from_df(slide_id, title='K8-vmware Project Tracking', data=df.loc[k0:k-1].reset_index(drop=True))
 		k0 = k
 		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=0, column_width=50)
