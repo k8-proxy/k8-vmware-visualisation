@@ -17,29 +17,22 @@ import ssl
 HOST                  = os.getenv('MYHOST')
 USER                  = os.getenv('MYUSER')
 PASSWORD              = os.getenv('MYPASSWORD')
+SECRET                = os.getenv('WEBHOOK_TOKEN')
 bucket                = 'wmware-data-visualisation'
 fileName              = 'machines.json'
 s3                    = boto3.client('s3')
 s                     = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
 s.verify_mode         = ssl.CERT_NONE
-si                    = SmartConnectNoSSL(host="HOST", user="USER", pwd="PASSWORD")
+si                    = SmartConnectNoSSL(host=HOST, user=USER, pwd=PASSWORD)
 event                 = si.event
 
 
 def handler(event, context):
-    obj               = {}
-    container         = event.viewManager.CreateContainerView(event.rootFolder, context, True)
-
-    for managed_object_ref in container.view:
-        obj.update({managed_object_ref: managed_object_ref.name})
-        return obj
-
-    #Calling above method
-    getAllVms          =   handler(event, [vim.VirtualMachine])
+    datacenter = content.rootFolder.childEntity[0]
+    vms = datacenter.vmFolder.childEntity
     data               =   []
-
     #Iterating each vm object and printing its name
-    for vm in getAllVms:
+    for vm in vms:
         VMData  = {}
         VMData['Name']                  = vm.summary.config.name
         VMData['PowerState']            = vm.summary.runtime.powerState
@@ -62,6 +55,8 @@ def handler(event, context):
         VMData['MaxCpuUsage']           = vm.summary.runtime.maxCpuUsage
         VMData['MaxMemoryUsage']        = vm.summary.runtime.maxMemoryUsage
         VMData['ConnectionState']       = vm.summary.runtime.connectionState
+        VMData['Version']               = vm.config.version
+        
         data.append(VMData)
 
         uploads   = bytes(json.dumps(data, indent=4, sort_keys=True, default=str).encode('UTF-8'))
