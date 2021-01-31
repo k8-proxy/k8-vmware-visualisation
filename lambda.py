@@ -24,7 +24,7 @@ s3                    = boto3.client('s3')
 s                     = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
 s.verify_mode         = ssl.CERT_NONE
 si                    = SmartConnectNoSSL(host=HOST, user=USER, pwd=PASSWORD)
-event                 = si.event
+content               = si.content
 
 
 def handler(event, context):
