@@ -6,7 +6,7 @@ Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
     Properties:
-      StageName: Prod
+      StageName: prod
     Auth:
      UsagePlan:
       CreateUsagePlan: PER_API
