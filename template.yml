@@ -24,12 +24,16 @@ Resources:
       Handler: lambda.handler
       Runtime: python3.8
       Events:
-      schedule:
-          rate: rate(24 hours)
-          enabled: true
         getCounter:
           Type: Api
           Properties:
             Path: /webhook
             Method: get
             RestApiId: !Ref ApiGatewayApi
+  functions:
+   aggregate:
+    handler: lambda.handler
+    events:
+    - schedule:
+        rate: rate(24 hours)
+        enabled: true
