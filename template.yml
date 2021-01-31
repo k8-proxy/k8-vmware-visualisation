@@ -24,7 +24,6 @@ Resources:
       Handler: lambda.handler
       Runtime: python3.8
       Events:
-      timeout: 360
         getCounter:
           Type: Api
           Properties:
