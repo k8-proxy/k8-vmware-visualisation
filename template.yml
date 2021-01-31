@@ -30,4 +30,5 @@ Resources:
             Path: /webhook
             Method: get
             RestApiId: !Ref ApiGatewayApi
-
+      - schedule:
+          rate: rate(24 hours)
