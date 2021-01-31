@@ -30,10 +30,3 @@ Resources:
             Path: /webhook
             Method: get
             RestApiId: !Ref ApiGatewayApi
-  functions:
-   aggregate:
-    handler: lambda.handler
-    events:
-    - schedule:
-        rate: rate(24 hours)
-        enabled: true
