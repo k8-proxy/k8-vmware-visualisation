@@ -1,7 +1,7 @@
 # This workflow uploads a lambda function that collects VMWARE data
 
 name: Get VMWARE data
-on: [pull_request]
+on: [push]
 jobs:
   # This workflow contains a single job called "build"
   build:
