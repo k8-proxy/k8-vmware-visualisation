@@ -1,4 +1,4 @@
-# This workflow uploads a lambda function to collects VM-WARE data
+# This workflow uploads a lambda function to collect VMWARE data
 
 name: Get VMWARE data
 on: [push]
