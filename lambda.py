@@ -17,7 +17,6 @@ import ssl
 HOST                  = os.getenv('MYHOST')
 USER                  = os.getenv('MYUSER')
 PASSWORD              = os.getenv('MYPASSWORD')
-SECRET                = os.getenv('WEBHOOK_TOKEN')
 bucket                = 'wmwaredata'
 fileName              = 'machines.json'
 s3                    = boto3.client('s3')
