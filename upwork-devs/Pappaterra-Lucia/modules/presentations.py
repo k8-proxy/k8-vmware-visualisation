@@ -30,9 +30,8 @@ def pull_data_from_gsh(sheet_name, gsheet=gsheet):
 	return df[['Name', 'Role In Project', 'Hours spent on project this week', 'Total Hours Available', 'Skills', 'Tasks Currently Working On', 'Blockers', 'Deliverables for this Week']]
 
 
-def create_presentation(df, file_name='Untitled', gdrive=gdrive):
+def create_presentation(df, file_name='Untitled', table_title='', step = 3, gdrive=gdrive):
 
-	# create google slides file is not existing file with that name
 	if file_name not in gdrive.get_files_names():
 		presentation_id = gdrive.create_google_slides(file_name)
 	else:
@@ -51,30 +50,32 @@ def create_presentation(df, file_name='Untitled', gdrive=gdrive):
 	# Add background color
 	#gslide.set_slide_background_color(page_id='p12', color='pale-blue')
 
-	requests = []
+	slides_ids = []
 	k0 = 0
-	step = 3
 	for k in range(step, len(df)+step, step):
 		slide_id = '0000' + str(k)
+		slides_ids.append(slide_id)
 		# Add table
-		gslide.add_slide_with_table_from_df(slide_id, title='K8-vmware Project Tracking', data=df.loc[k0:k-1].reset_index(drop=True))
+		gslide.add_slide_with_table_from_df(slide_id, title=table_title, data=df.loc[k0:k-1].reset_index(drop=True))
 		k0 = k
-		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=0, column_width=50)
-		requests.append(request)
-		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=1, column_width=65)
-		requests.append(request)
-		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=2, column_width=90)
-		requests.append(request)
-		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=3, column_width=70)
-		requests.append(request)
-		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=4, column_width=100)
-		requests.append(request)
-		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=5, column_width=120)
-		requests.append(request)
-		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=6, column_width=80)
-		requests.append(request)
-		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=7, column_width=120)
+
+	return presentation_id, slides_ids
+
+
+def tracking_enhancement(presentation_id, slides_ids, gdrive=gdrive):
+
+	gslide = GSlide(presentation_id)
+
+	widths = [50, 65, 90, 60, 100, 120, 80, 120]
+	requests = []
+	for slide_id, i, w in zip(slides_ids, range(8), widths):
+		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=i, column_width=w)
 		requests.append(request)
 
 	if len(requests) > 0: gslide.batch_update(requests)
+
+
+def release_enhancement(presentation_id, slides_ids, gdrive=gdrive):
+
+	gslide = GSlide(presentation_id)
 
