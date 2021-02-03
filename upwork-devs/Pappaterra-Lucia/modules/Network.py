@@ -171,7 +171,7 @@ def group_settings_VM(d, group, x, y, color, shape="default"):
 	elif group == "Name":
 		d["color"] = BLUE
 		d["shape"] = SHAPE2
-		d["level"] = 4
+		d["level"] = 3
 
 	elif group == "GuestId":
 		d["color"] = YELLOW
@@ -191,22 +191,22 @@ def group_settings_VM(d, group, x, y, color, shape="default"):
 	elif group == "PowerState":
 		d["color"] = PURPLE
 		d["shape"] = SHAPE2
-		d["level"] = 3
+		d["level"] = 5
 
 	elif group == "Version":
 		d["color"] = ORANGE
 		d["shape"] = SHAPE
-		d["level"] = 5
+		d["level"] = 6
 
 	elif group == "HardwareVersion":
 		d["color"] = RED
 		d["shape"] = SHAPE2
-		d["level"] = 6
+		d["level"] = 7
 
-	elif group == "VMResourceConfiguration":
+	elif group == "ConnectionState":
 		d["color"] = BROWN
 		d["shape"] = SHAPE2
-		d["level"] = 7
+		d["level"] = 4
 
 	return d
 
