@@ -1135,8 +1135,8 @@ def split_non_consecutive(data):
     except StopIteration:
         if chunk:
             yield chunk
-            
-            
+
+
 def create_chunks(list_name, n):
     """
     Yields successive 'n' sized chunks from list 'list_name'.
@@ -1148,7 +1148,7 @@ def create_chunks(list_name, n):
     for i in range(0, len(list_name), n):
         yield list_name[i:i + n]
 
-            
+
 def rgb(color='white'):
     """
     Given color name, returns its RGB values.
@@ -1172,12 +1172,16 @@ def rgb(color='white'):
         r, g, b = 0.1, 0.6, 0.8
     elif color == 'blue1':
         r, g, b = 0.1, 0.4, 0.5
+    elif color == 'dark-blue':
+        r, g, b = 0.06, 0.26, 0.37
     elif color == 'light-blue':
         r, g, b = 0.2, 0.71, 1
     elif color == 'pale-blue':
         r, g, b = 0.85, 0.95, 0.96
     elif color == 'yellow':
-        r, g, b = 1, 1, 0  
+        r, g, b = 1, 1, 0
+    elif color == 'gray0':
+        r, g, b = 0.5, 0.5, 0.5
     elif color == 'gray':
         r, g, b = 0.85, 0.85, 0.85
     elif color == 'dark':
@@ -1186,6 +1190,8 @@ def rgb(color='white'):
         r, g, b = 0.8, 0.2, 0.6
     elif color == 'purple':
         r, g, b = 0.76, 0.48, 0.63
-        
+    elif color == 'green-blue':
+        r, g, b = 0.1, 0.57, 0.6
+
     return r, g, b
 

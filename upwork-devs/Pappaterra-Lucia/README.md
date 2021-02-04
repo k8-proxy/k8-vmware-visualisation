@@ -5,7 +5,8 @@
 - [VMs-visualisations-1](#VMs-visualisations-1)
 - [VMs-visualisations-2](#VMs-visualisations-2)
 - [K8-vmware Project Tracking](#project-tracking)
-- [Release visualisation](#release-visualisation)
+- [Release Visualisation](#release-visualisation)
+- [Release Presentation](#release-presentation)
 
 
 <a id="architectural-diagram"></a>
@@ -53,11 +54,19 @@ https://docs.google.com/spreadsheets/d/1SetbtWlZC9fEddTbOzlnM36OQYBdtg0bbG4quq9O
 
 
 <a id="release-visualisation"></a>
-## Release visualisation
+## Release Visualisation
 
 Repo's releases visualisations.
 
 The data needed for this notebook is get from here
 
 https://wmwaredata.s3.us-east-2.amazonaws.com/releases.json
+
+
+<a id="release-presentation"></a>
+## Release Presentation
+
+This notebook create a google slide presentation about Releases that is saved to this folder:
+
+https://drive.google.com/drive/u/1/folders/1dELfGV6IMMII97tTjqSXeJwPAMEjtbDX
 
