@@ -126,7 +126,6 @@ class GSlide():
 
     def element_set_table_text(self, table_id, row, col, text):
         requests = self.element_set_table_text_requests(table_id, row, col, text)
-
         self.batch_update(requests)
 
 
@@ -182,7 +181,7 @@ class GSlide():
         r, g, b = rgb(color)
         style = {  'bold'            : True,
                    'fontFamily'      : 'Avenir',
-                   'fontSize'        : { 'magnitude'  : font_size, 'unit': 'PT' },
+                   'fontSize'        : { 'magnitude' : font_size, 'unit': 'PT' },
                    'foregroundColor' : {'opaqueColor': {'rgbColor': {'blue': b, 'green': g, 'red': r}}}}
         fields   = 'bold,fontFamily,fontSize,foregroundColor'
 
@@ -297,47 +296,9 @@ class GSlide():
         return list(slides_meta.keys())
 
 
-    def cell_background_color_request(self, table_id, row, col, color):
-        r, g, b = rgb(color)
-        return {'updateTableCellProperties': 
-                    { 'objectId': table_id,
-                      'tableRange': {
-                          'location': {
-                              'rowIndex': row,
-                              'columnIndex': col
-                                       },
-                          'rowSpan': 1,
-                          'columnSpan': 1
-                                    },
-                      'tableCellProperties': {
-                          'tableCellBackgroundFill': {
-                              'solidFill': {
-                                  'color': {
-                                      'rgbColor': {
-                                          'red': r,
-                                          'green': g,
-                                          'blue': b,
-                                      }
-                                  }
-                              }
-                          }
-                      },
-                      'fields': 'tableCellBackgroundFill'
-                    }
-               }
+    ############################# TABLE METHODS: ####################################################################
 
-
-    def set_cell_background_color(self, table_id, row, col, color):
-        requests = [self.cell_background_color_request(table_id, row, col, color)]
-        self.batch_update(requests)
-
-
-    def set_multiple_cells_background_color(self, table_id, start_row, end_row, start_col, end_col, color):
-        requests = [self.cell_background_color_request(table_id, row, col, color) for row in range(start_row, end_row) for col in range(start_col, end_col)]
-        self.batch_update(requests)
-
-
-    def add_slide_with_table_from_df(self, slide_id, title, data, title_size=26, title_color='gray0', headers_color='gray', cells_color=None):
+    def add_slide_with_table_from_df(self, slide_id, title, data, title_size=26, title_color='gray0', headers_color='gray', cells_color=None, columns_widths=[], columns_to_merge=[]):
 
         # check if there already exist a slide with that id
         slides_ids = self.get_slides_ids()
@@ -383,6 +344,7 @@ class GSlide():
 
                     requests.extend(self.element_set_table_text_requests(table_id, i+1, index, cell_text))
                     if cell_text != '':
+                        pass
                         requests.append(self.element_set_table_cell_size_bold_requests(table_id, i+1, index, s, False))
 
             self.batch_update(requests)
@@ -394,8 +356,125 @@ class GSlide():
             if cells_color is not None: 
                 self.set_multiple_cells_background_color(table_id, start_row=1, end_row=rows, start_col=0, end_col=len(headers), color=cells_color)
 
+            # Columns widths:
+            if len(data.columns) == len(columns_widths):
+                self.set_columns_widths(table_id, columns_widths)
 
-    ############################# MASTER SLIDES CHANGES: ####################################################################
+            # Merge cells
+            if len(columns_to_merge) != 0:
+                self.merge_table(table_id, data, columns_to_merge)
+
+            return table_id, title_id
+
+
+    def cell_background_color_request(self, table_id, row, col, color):
+        r, g, b = rgb(color)
+        return {'updateTableCellProperties': 
+                    { 'objectId': table_id,
+                      'tableRange': {
+                          'location': {
+                              'rowIndex': row,
+                              'columnIndex': col
+                                       },
+                          'rowSpan': 1,
+                          'columnSpan': 1
+                                    },
+                      'tableCellProperties': {
+                          'tableCellBackgroundFill': {
+                              'solidFill': {
+                                  'color': {
+                                      'rgbColor': {
+                                          'red': r,
+                                          'green': g,
+                                          'blue': b,
+                                      }
+                                  }
+                              }
+                          }
+                      },
+                      'fields': 'tableCellBackgroundFill'
+                    }
+               }
+
+
+    def set_cell_background_color(self, table_id, row, col, color):
+        requests = [self.cell_background_color_request(table_id, row, col, color)]
+        self.batch_update(requests)
+
+
+    def set_multiple_cells_background_color(self, table_id, start_row, end_row, start_col, end_col, color):
+        requests = [self.cell_background_color_request(table_id, row, col, color) for row in range(start_row, end_row) for col in range(start_col, end_col)]
+        self.batch_update(requests)
+
+
+    def set_columns_widths(self, table_id, columns_widths):
+
+        n = len(columns_widths)
+        requests = []
+        for i, w in zip(range(n), columns_widths):
+            request = self.element_set_table_column_width_request(table_id, column_index=i, column_width=w)
+            requests.append(request)
+
+        if len(requests) > 0: self.batch_update(requests)
+
+
+    def merge_table_cells_request(self, table_id, row_index, col_index, row_span, col_span=1):
+        return {'mergeTableCells': {'objectId': table_id,
+                                  'tableRange': {
+                                      'location': {'rowIndex': row_index, 
+                                                   'columnIndex': col_index},
+                                      'rowSpan': row_span,
+                                      'columnSpan': col_span
+                                  }
+                                 }}
+
+
+    def merge_table_cells(self, table_id, row_index, col_index, row_span, col_span=1):
+        request = self.merge_table_cells_request(table_id, row_index, col_index, row_span, col_span)
+        self.batch_update(request)
+
+
+    def merge_table(self, table_id, df, columns_to_merge):
+        cols = {}
+        col_names = df.columns.to_list()
+        for name in columns_to_merge:
+            if name in col_names:
+                cols[name] = df.columns.get_loc(name) 
+
+        for col in cols:
+            values = df[col].unique() # unique values in col
+
+            for value in values:
+                c = df[col][df[col] == value].index.tolist()
+
+                if len(c) > 1:
+                    j = cols[col]
+                    for i in c:
+                        self.delete_table_cell_text(table_id, row=i+1, col=j)
+                    self.element_set_table_text(table_id, row=c[0]+1, col=j, text=value)
+                    self.merge_table_cells(table_id, row_index=c[0]+1, col_index=j, row_span=len(c))
+
+        self.element_set_table_row_height(table_id, height=3)
+
+
+    def element_set_table_row_height(self, table_id, height):
+        request = self.element_set_table_row_height_request(table_id, height)
+        self.batch_update(request)
+
+
+    def delete_table_cell_text_request(self, table_id, row, col):
+        return { "deleteText": {   "objectId"      : table_id,
+                                        "cellLocation"  : { "rowIndex": row, "columnIndex": col   },
+                                        "textRange"     : { "type": "ALL"                         }}}
+
+
+    def delete_table_cell_text(self, table_id, row, col):
+        request = self.delete_table_cell_text_request(table_id, row, col)
+        self.batch_update(request)
+
+
+    ############################# MASTER SLIDES METHODS: ####################################################################
+
     def slide_background_image_request(self, page_id, image_url):
          return {'updatePageProperties': {
                      'objectId': page_id,
@@ -439,5 +518,4 @@ class GSlide():
     def set_slide_background_color(self, page_id, color):
         requests = [self.slide_background_color_request(page_id, color)]
         self.batch_update(requests)
-    #########################################################################################################################
 
