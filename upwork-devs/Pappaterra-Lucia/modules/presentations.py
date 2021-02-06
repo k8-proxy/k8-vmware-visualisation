@@ -1,3 +1,4 @@
+import textwrap
 from modules.GoogleDrive2 import GDrive
 from modules.GoogleSheets2 import GSheet
 from modules.GoogleSlides2 import GSlide
@@ -30,7 +31,7 @@ def pull_data_from_gsh(sheet_name, gsheet=gsheet):
 	return df[['Name', 'Role In Project', 'Hours spent on project this week', 'Total Hours Available', 'Skills', 'Tasks Currently Working On', 'Blockers', 'Deliverables for this Week']]
 
 
-def create_presentation(df, file_name='Untitled', table_title='', step = 3, gdrive=gdrive):
+def create_presentation(df, file_name='Untitled', table_title='', step = 3, columns_widths=[], columns_to_merge=[], gdrive=gdrive):
 
 	if file_name not in gdrive.get_files_names():
 		presentation_id = gdrive.create_google_slides(file_name)
@@ -56,26 +57,26 @@ def create_presentation(df, file_name='Untitled', table_title='', step = 3, gdri
 		slide_id = '0000' + str(k)
 		slides_ids.append(slide_id)
 		# Add table
-		gslide.add_slide_with_table_from_df(slide_id, title=table_title, data=df.loc[k0:k-1].reset_index(drop=True))
+		data=df.loc[k0:k-1].reset_index(drop=True)
+		gslide.add_slide_with_table_from_df(slide_id, table_title, data, columns_widths=columns_widths, columns_to_merge=columns_to_merge)
 		k0 = k
 
-	return presentation_id, slides_ids
+
+def wrap_by_word(s, n):
+	"""
+	Returns a string where \n is inserted between every n words
+
+	:param s: string
+	:param n: integer, number of words
+	:return:
+	"""
+	a = s.split()
+	ret = ''
+	for i in range(0, len(a), n):
+		ret += ' '.join(a[i:i+n]) + '\n'
+	return ret
 
 
-def tracking_enhancement(presentation_id, slides_ids, gdrive=gdrive):
-
-	gslide = GSlide(presentation_id)
-
-	widths = [50, 65, 90, 60, 100, 120, 80, 120]
-	requests = []
-	for slide_id, i, w in zip(slides_ids, range(8), widths):
-		request = gslide.element_set_table_column_width_request(table_id=slide_id+'_table', column_index=i, column_width=w)
-		requests.append(request)
-
-	if len(requests) > 0: gslide.batch_update(requests)
-
-
-def release_enhancement(presentation_id, slides_ids, gdrive=gdrive):
-
-	gslide = GSlide(presentation_id)
+def wrap_by_char(s, n):
+	return '\n'.join(l for line in s.splitlines() for l in textwrap.wrap(line, width=n))
 
