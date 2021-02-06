@@ -25,7 +25,7 @@ class Network():
 		self.nodesIds = {} # dict with nodes ids by label keys
 		self.nodesLabels = {} # dict with nodes labels by id key
 		self.groups = []
-		self.nodesGroups = {} # dict with nodes' groups by id key if any
+		self.nodesGroups = {} # dict with nodes' groups by id key if an
 		self.groupSettings = lambda *args: args # function to set groups' characteristics
 		self.edges = [] # list of groups for nodes
 		self.edgesIdsCounter = 0 # id of next edge to add
@@ -217,8 +217,12 @@ def group_settings_R(d, group, x=None, y=None, color=None, shape=None):
 		d["color"] = rgb2hex(plt.cm.Pastel1(0))
 		d["shape"] = 'box'
 
-	elif group == "Tag_Id":
+	elif group == "Tag":
 		d["color"] = rgb2hex(plt.cm.Pastel1(1))
+
+	elif group == "Date":
+		d["color"] = rgb2hex(plt.cm.Pastel1(2))
+		d["shape"] = 'box'
 
 	elif group == "Description":
 		d["color"] = rgb2hex(plt.cm.Pastel1(5))
