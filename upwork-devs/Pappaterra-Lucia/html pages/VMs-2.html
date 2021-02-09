@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+</html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>No Hierarchy</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+    </head>
+
+    <body>
+          <p>No Hierarchy</p>
+          <div id="mynetwork3"> </div>
+
+          <!-- Add an invisible <div> element to the document, to hold the JSON data: -->
+        <div id="networkJSON-results" class="results" style="display:none"></div>
+
+          <script type="text/javascript">
+            var SHAPE = "circle", //"box", //"square"
+                SHAPE2 = "box",
+                BLUE = "#99CDFF",
+                YELLOW = "#FEEBA7",
+                GREEN = "#C6E7B0",
+                PURPLE = "#DAADF0",
+                ORANGE = "#FFC266",
+                PINK = "#FFBBB2",
+                BROWN = "#ADAD85",
+                RED = "#FF6666",
+                AQUAMARINE = "#5CD6D6";
+
+            var json = $.getJSON("../data/nodes_edges_2.json")
+             .done(function(data){
+               var data = {
+                 nodes: data.nodes,
+                 edges: data.edges
+               };
+               var network = new vis.Network(container, data, options);
+            });
+
+            var options = {
+              width: '2000px',
+              height: '1500px',
+              physics: true,
+              groups: {
+                Reference: {
+                  fixed: true,
+                  physics: false,
+                },
+                Name: {
+                  shape: SHAPE2,
+                  color: BLUE,
+                },
+                GuestId: {
+                  shape: SHAPE2,
+                  color: YELLOW,
+                },
+                NumCpu: {
+                  shape: SHAPE,
+                  color: PINK,
+                },
+                MemoryMB: {
+                  shape: SHAPE,
+                  color: GREEN,
+                },
+                PowerState: {
+                  shape: SHAPE2,
+                  color: PURPLE,
+                },
+                HardwareVersion: {
+                  shape: SHAPE2,
+                  color: ORANGE,
+                },
+                Version: {
+                  shape: SHAPE,
+                  color: RED,
+                },
+                ConnectionState: {
+                  shape: SHAPE2,
+                  color: BROWN,
+                },
+              },
+            };
+            var container = document.getElementById("mynetwork3");
+          </script>
+    </body>
+</html>

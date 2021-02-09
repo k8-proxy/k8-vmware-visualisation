@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+</html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Workflow</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+    </head>
+
+    <body>
+          <p>Workflow</p>
+          <div id="mynetwork"> </div>
+
+          <!-- Add an invisible <div> element to the document, to hold the JSON data: -->
+        <div id="networkJSON-results" class="results" style="display:none"></div>
+
+          <script type="text/javascript">
+            var SHAPE = "circle", //"box", //"square"
+                SHAPE2 = "box",
+                BLUE = "#99CDFF",
+                YELLOW = "#FEEBA7",
+                GREEN = "#C6E7B0",
+                PURPLE = "#DAADF0",
+                ORANGE = "#FFC266",
+                PINK = "#FFBBB2",
+                BLACK = "#2B1B17",
+                BROWN = "#ADAD85",
+                RED = "#FF6666";
+
+            // create an array with nodes
+            var nodes = new vis.DataSet([ 
+                { id: 0, label: "Name\nId", group: "Name" },  
+                { id: 1, label: "GuestId", group: "GuestId" },  
+                { id: 2, label: "NumCpu", group: "NumCpu" }, 
+                { id: 3, label: "MemoryMB",  group: "MemoryMB" }, 
+                { id: 4, label: "PowerState",  group: "PowerState" },
+                { id: 5, label: "HardwareVersion", group: "HardwareVersion" },
+                { id: 6, label: "Version", group: "Version" }, 
+                { id: 7, label: "ConnectionState", group: "ConnectionState" },
+                //{ id: 8, label: "VMResourceConfiguration", group: "VMResourceConfiguration" },
+             ]);
+
+            // create an array with edges
+            var edges = new vis.DataSet([
+                { id: 1, from: 0, to: 1, arrows: "to", color: BLACK },
+                { id: 2, from: 0, to: 2, arrows: "to", color: BLACK },
+                { id: 3, from: 0, to: 3, arrows: "to", color: BLACK },
+                { id: 4, from: 0, to: 4, arrows: "to", color: BLACK },
+                { id: 5, from: 0, to: 5, arrows: "to", color: BLACK },
+                { id: 6, from: 0, to: 6, arrows: "to", color: BLACK },
+                { id: 7, from: 0, to: 7, arrows: "to", color: BLACK },
+             ]);
+
+            // create a network
+            var data = {
+                nodes: nodes,
+                edges: edges,
+            };
+            var container = document.getElementById("mynetwork");
+            var options = {
+                width: '1200px',
+                height: '400px',
+                physics: true,
+                groups: {
+                  Name: {
+                    shape: SHAPE2,
+                    color: BLUE,
+                  },
+                  GuestId: {
+                    shape: SHAPE2,
+                    color: YELLOW,
+                  },
+                  NumCpu: {
+                    shape: SHAPE,
+                    color: PINK,
+                  },
+                  MemoryMB: {
+                    shape: SHAPE,
+                    color: GREEN,
+                  },
+                  PowerState: {
+                    shape: SHAPE2,
+                    color: PURPLE,
+                  },
+                  HardwareVersion: {
+                    shape: SHAPE2,
+                    color: RED,
+                  },
+                  Version: {
+                    shape: SHAPE,
+                    color: ORANGE,
+                  },
+                  ConnectionState: {
+                    shape: SHAPE2,
+                    color: BROWN,
+                  },
+                },
+            };
+            var network = new vis.Network(container, data, options);
+          </script>
+    </body>
+</html>
