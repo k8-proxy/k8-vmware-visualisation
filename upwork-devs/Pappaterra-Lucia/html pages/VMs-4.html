@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+</html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>VMHost node and subnetworks</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+    </head>
+
+    <body>
+          <p>VMHost node and subnetworks</p>
+          <div id="mynetwork2"> </div>
+
+          <!-- Add an invisible <div> element to the document, to hold the JSON data: -->
+        <div id="networkJSON-results" class="results" style="display:none"></div>
+
+          <script type="text/javascript">
+            var json = $.getJSON("../data/nodes_edges_4.json")
+              .done(function(data){
+                var data = {
+                  nodes: data.nodes,
+                  edges: data.edges
+              };
+            var network = new vis.Network(container, data, options);
+            });
+
+            var options = {
+              width: '2000px',
+              height: '1500px',
+              locale: 'en',
+              physics: true,
+              interaction: {
+                hover:true,
+                tooltipDelay: 300
+              },
+              layout: {
+                randomSeed: 1,
+                improvedLayout: true,
+              }
+            };
+            var container = document.getElementById("mynetwork2");
+          </script>
+    </body>
+</html>

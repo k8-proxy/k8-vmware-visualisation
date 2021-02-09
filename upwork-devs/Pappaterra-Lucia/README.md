@@ -70,3 +70,16 @@ This notebook create a google slide presentation about Releases that is saved to
 
 https://drive.google.com/drive/u/1/folders/1dELfGV6IMMII97tTjqSXeJwPAMEjtbDX
 
+
+# HTML pages
+
+All the networks visualized inside the notebooks can also be visualized in the html pages that you can find in the 'html pages' folder.
+
+To be able to visualize the html pages you will need to run a local server.
+
+If you are using **Ubuntu**, to start the http server on an specific port, for instance port 8080, simply type:
+
+```
+	python -m http.server 8080
+```
+
