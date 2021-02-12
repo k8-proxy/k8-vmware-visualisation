@@ -3,126 +3,231 @@
         "release_date": "2021-01-29T12:29:04Z",
         "release_name": "- Instructions simplified\r\n- Bugs fixed\r\n- New setup UI introduced",
         "release_tag": "v0.2.1",
-        "repo_name": "aws-jmeter-test-engine",
+        "repo_repo": "aws-jmeter-test-engine",
         "repo_url": "https://github.com/k8-proxy/aws-jmeter-test-engine"
     },
     {
         "release_date": "2021-01-22T14:06:01Z",
         "release_name": "* UI Updates\r\n   - interface supports trigger load\r\n   - UI Interface supports load agains direct icap, via proxy offline site and proxied Sharepoint\r\n   - stop tests from UI\r\n   - performance test summary results table\r\n* ICAPServer Performance Test and Analytics Ubuntu AMI is published in all supported regions (AWS Ireland, North Virginia, Oregon and North California)\r\n* Implemented results automatic analyser.\r\n* Both dashboard and load generators are now based on Ubuntu 20.04\r\n* Weekly packer build AMI/OVA with github actions.",
         "release_tag": "v0.2.0",
-        "repo_name": "aws-jmeter-test-engine",
+        "repo_repo": "aws-jmeter-test-engine",
         "repo_url": "https://github.com/k8-proxy/aws-jmeter-test-engine"
     },
     {
         "release_date": "2020-10-20T13:01:48Z",
         "release_name": "- Configured AWS Cloud Formation stack to automatically create the infrastructure to generate traffic & run tests\r\n- Implemented input mechanism to retrieve required files for processing from S3\r\n- Implemented assertion mechanism that validates the response code returned from ICAP server.\r\n- Implemented Influx DB logging solution to log the performance metrics\r\n- Implemented monitoring feature using Grafana for detailed metrics dashboard display\r\n- Implemented the mechanism to dynamically create EC2 instances based on the number of users in the test run.\r\n- Implemented a mechanism to dynamically assign users to each ec2 instance.",
         "release_tag": "v0.1.0",
-        "repo_name": "aws-jmeter-test-engine",
+        "repo_repo": "aws-jmeter-test-engine",
         "repo_url": "https://github.com/k8-proxy/aws-jmeter-test-engine"
     },
     {
         "release_date": "2020-12-18T17:53:54Z",
         "release_name": "<strong>Release Notes for v1.0.0</strong>\r\n<li>Policy Management applied to files rebuilt through Cloud Version.</li>\r\n<li>Maintained History for Policy Management changes (Past/Current).</li>\r\n<li>Added Glasswall icon in the MAC build.</li>\r\n<li>Removed Electron from Menu bar on MAC build.</li>\r\n<li>Added Geotiff file support to the Policy Management both Docker and Cloud</li>\r\n<li>Analysis of files rebuild has been integrated in cloud and docker.</li>\r\n<li>New docker rebuild image TAG integrated.</li>\r\n<li>Bugs Fixes:</li>\r\nCorrect File is getting saved on custom location after rebuild.\r\nFixed sorting in-case of multi page\r\nFixed alignment under session page.",
         "release_tag": "v1.0.0",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": "2020-11-27T12:31:01Z",
         "release_name": "<strong>Release Notes for v0.9.0</strong>\r\n<li>Added Threat Intelligence to the cloud rebuild, Displayed threat level on the UI</li>\r\n<li>Watermark added for rebuild PDF file.</li>\r\n<li>Buy Token feature added under setting.</li>\r\n<li>Bugs Fixes:</li>\r\nOn rebuilding the file using Cloud user is displayed the wrong time under session.\r\nFixed sorting in-case of multi page\r\nFixed alignment under session page.\r\nFixed analysis report earlier it was showing High for all the files.\r\nError message being displayed incase file is blocked due to Policy.\r\nFixed alignment on mouse hover on Flat and Hierarchy label on Cloud and Docker page\r\nSession page not getting loaded in case no session is present.\r\nRaw Logs added in multi-line format in case logs are very long. (Removed horizontal scroll bar)\r\nColor of all the buttons under different pages made in sync.\r\nAligned the text on each page\r\nProvide an interface to update the GW image name.\r\nSaving files in destination folder as it get processed.\r\n",
         "release_tag": "v0.9.0",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": "2020-11-21T13:39:04Z",
         "release_name": "<strong>Release Notes for v0.1.7</strong>\r\n<li>Policy Control & Management : UI and Backend (Policy view, Edit, Save, Apply to docker container).</li>\r\n<li>Threat Analysis : Integrated Threat analysis of files rebuilt with docker.</li>\r\n<li>Integrated processing target with rebuilt sessions metadata : Cloud/Docker.</li>\r\n<li>UI Enhancement and some minor fixes.</li>\r\n",
         "release_tag": "v0.1.7",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": "2020-11-13T20:20:58Z",
         "release_name": "<strong>Release Notes for v0.1.6</strong>\r\n<li>Added support for Parallel & Sequential execution of requests with docker.</li>\r\n<li>Added Threat Intelligence to the application, Displayed threat level on the UI.</li>\r\n<li>Session History:  Added session history tab which list all the rebuild sessions (Cloud and Local).</li>\r\n<li>Rebuild & File analysis event logging:  Added separate tab to capture RAW logs using a file backed logger.</li>\r\n<li>Made server configuration configurable.</li>\r\n<li>Fixed google universal analytics issues and downloads are now visible on GA.</li>\r\n<li>UI Enhancement and some minor fixes.</li>\r\n",
         "release_tag": "v0.1.6",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": "2020-11-06T16:48:45Z",
         "release_name": "<strong>Release Notes for v0.1.5</strong>\r\n<li>Local rebuild health check : To check the local rebuild configuration and it state</li>\r\n  &nbsp;  &nbsp;  &nbsp;  &nbsp; a) If docker Installed.<br>\r\n  &nbsp;  &nbsp;  &nbsp;  &nbsp; b)f docker running.<br>\r\n  &nbsp;  &nbsp;  &nbsp;  &nbsp; c) If GW image present else pull.<br>\r\n &nbsp;  &nbsp;  &nbsp;  &nbsp;  d) If GW image licensed.<br>\r\n<li>Health check event logging: Added the event logs for docker health check.</li>\r\n<li>Rebuild & File analysis event logging: Added the event logs for local Rebuild and file analysis.\r\n<li>Added health check functionality on UI.</li>\r\n<li>Made output path persistent across rebuilds.</li>\r\n<li>UI Enhancement and some minor fixes</li>",
         "release_tag": "v0.1.5",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": "2020-10-29T16:09:16Z",
         "release_name": "<strong> Release Notes for v0.1.4 </strong>\r\n<li>Processing rebuild locally through Docker after pulling the docker image.</li>\r\n<li>Creating analysis report for rebuilt files locally through Docker.</li>\r\n<li>Added option for User to rebuild app either locally or through cloud.</li>\r\n<li>Modified the ReadMe with steps to run rebuild locally through docker.</li>\r\n<li>Added option for User to rebuild app either locally or through cloud.</li>\r\n<li>Git link for above changes: https://github.com/k8-proxy/glasswall-desktop/pull/95</li>\r\n<li>Creating analysis report for rebuilt files locally through Docker.</li>\r\n",
         "release_tag": "v0.1.4",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": "2020-10-21T13:13:12Z",
         "release_name": "1.  Fixed Video link\r\n2. Fixed Help Shortcut\r\n4. Updated ReadMe for the new version",
         "release_tag": "v0.1.3",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": "2020-10-20T23:38:02Z",
         "release_name": "1. FIxed website link\r\n2. Fixed Linux broken link",
         "release_tag": "v0.1.2",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": null,
         "release_name": "Bug fixing",
         "release_tag": "v0.1.1",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": null,
         "release_name": "Bugs fixing",
         "release_tag": "v0.1.1",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": "2020-10-19T07:29:09Z",
         "release_name": "First release - online version of GW desktop",
         "release_tag": "v0.1.0",
-        "repo_name": "glasswall-desktop",
+        "repo_repo": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
         "release_date": "2021-01-19T09:07:32Z",
         "release_name": "First tag with stable version of gp-load-balancer",
         "release_tag": "v0.1.0",
-        "repo_name": "gp-load-balancer",
+        "repo_repo": "gp-load-balancer",
         "repo_url": "https://github.com/k8-proxy/gp-load-balancer"
     },
     {
-        "release_date": "2021-02-05T10:20:53Z",
-        "release_name": "Version 0.0.1 release of \r\n\r\n- Glasswall O365 File Handler\r\n- Glasswall O365 SP Extension\r\n- Glasswall SP OnPrem FIle Handler",
-        "release_tag": "v0.0.1",
-        "repo_name": "gp-sharepoint",
+        "release_date": "2021-02-08T12:57:47Z",
+        "release_name": "v0.0.10",
+        "release_tag": "v0.0.10",
+        "repo_repo": "gp-sharepoint",
         "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
     },
     {
-        "release_date": "2021-02-05T10:20:53Z",
-        "release_name": "Version 0.0.1 release of \r\n\r\n- Glasswall O365 File Handler\r\n- Glasswall O365 SP Extension\r\n- Glasswall SP OnPrem FIle Handler",
-        "release_tag": "v0.0.1",
-        "repo_name": "gp-sharepoint-plugins",
+        "release_date": "2021-02-08T12:52:06Z",
+        "release_name": "v0.0.9",
+        "release_tag": "v0.0.9",
+        "repo_repo": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "release_date": "2021-02-08T12:46:38Z",
+        "release_name": "v0.0.8",
+        "release_tag": "v0.0.8",
+        "repo_repo": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "release_date": "2021-02-08T10:47:46Z",
+        "release_name": "v0.0.7",
+        "release_tag": "v0.0.7",
+        "repo_repo": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "release_date": "2021-02-08T10:39:12Z",
+        "release_name": "v0.0.6",
+        "release_tag": "v0.0.6",
+        "repo_repo": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "release_date": "2021-02-08T10:32:16Z",
+        "release_name": "v0.0.5",
+        "release_tag": "v0.0.5",
+        "repo_repo": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "release_date": "2021-02-08T10:24:28Z",
+        "release_name": "v0.0.4",
+        "release_tag": "v0.0.4",
+        "repo_repo": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "release_date": "2021-02-08T10:10:36Z",
+        "release_name": "v0.0.3",
+        "release_tag": "v0.0.3",
+        "repo_repo": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "release_date": "2021-02-08T09:56:27Z",
+        "release_name": "v0.0.2",
+        "release_tag": "v0.0.2",
+        "repo_repo": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "release_date": "2021-02-08T12:57:47Z",
+        "release_name": "v0.0.10",
+        "release_tag": "v0.0.10",
+        "repo_repo": "gp-sharepoint-plugins",
         "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
-        "release_date": "2021-01-08T16:40:48Z",
-        "release_name": "",
-        "release_tag": "v0.5.1",
-        "repo_name": "GW-proxy",
-        "repo_url": "https://github.com/k8-proxy/GW-proxy"
+        "release_date": "2021-02-08T12:52:06Z",
+        "release_name": "v0.0.9",
+        "release_tag": "v0.0.9",
+        "repo_repo": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+    },
+    {
+        "release_date": "2021-02-08T12:46:38Z",
+        "release_name": "v0.0.8",
+        "release_tag": "v0.0.8",
+        "repo_repo": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+    },
+    {
+        "release_date": "2021-02-08T10:47:46Z",
+        "release_name": "v0.0.7",
+        "release_tag": "v0.0.7",
+        "repo_repo": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+    },
+    {
+        "release_date": "2021-02-08T10:39:12Z",
+        "release_name": "v0.0.6",
+        "release_tag": "v0.0.6",
+        "repo_repo": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+    },
+    {
+        "release_date": "2021-02-08T10:32:16Z",
+        "release_name": "v0.0.5",
+        "release_tag": "v0.0.5",
+        "repo_repo": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+    },
+    {
+        "release_date": "2021-02-08T10:24:28Z",
+        "release_name": "v0.0.4",
+        "release_tag": "v0.0.4",
+        "repo_repo": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+    },
+    {
+        "release_date": "2021-02-08T10:10:36Z",
+        "release_name": "v0.0.3",
+        "release_tag": "v0.0.3",
+        "repo_repo": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+    },
+    {
+        "release_date": "2021-02-08T09:56:27Z",
+        "release_name": "v0.0.2",
+        "release_tag": "v0.0.2",
+        "repo_repo": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     }
 ]
