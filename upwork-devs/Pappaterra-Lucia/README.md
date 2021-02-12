@@ -7,6 +7,7 @@
 - [K8-vmware Project Tracking](#project-tracking)
 - [Release Visualisation](#release-visualisation)
 - [Release Presentation](#release-presentation)
+- [Screenshots](#screenshots)
 
 
 <a id="architectural-diagram"></a>
@@ -80,6 +81,18 @@ To be able to visualize the html pages you will need to run a local server.
 If you are using **Ubuntu**, to start the http server on an specific port, for instance port 8080, simply type:
 
 ```
-	python -m http.server 8080
+    python -m http.server 8080
 ```
+
+## How to take screen shoots of the html pages locally
+
+<a id="screenshots"></a>
+## Screenshots
+
+Run this notebook to take screenshots of the html pages. 
+
+You must have the html pages running on a local server for it to work. 
+
+Taken screenshots are saved to data folder.
+
 

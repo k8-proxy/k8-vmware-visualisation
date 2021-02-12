@@ -1,4 +1,5 @@
 import textwrap
+import time
 from modules.GoogleDrive2 import GDrive
 from modules.GoogleSheets2 import GSheet
 from modules.GoogleSlides2 import GSlide
@@ -59,6 +60,7 @@ def create_presentation(df, file_name='Untitled', table_title='', step = 3, colu
 		# Add table
 		data=df.loc[k0:k-1].reset_index(drop=True)
 		gslide.add_slide_with_table_from_df(slide_id, table_title, data, columns_widths=columns_widths, columns_to_merge=columns_to_merge)
+		time.sleep(15)
 		k0 = k
 
 
