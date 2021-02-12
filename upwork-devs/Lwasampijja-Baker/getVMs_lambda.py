@@ -1,38 +1,37 @@
 #! /usr/bin/env python
+
 from pyVim.connect import SmartConnect, SmartConnectNoSSL, Disconnect
 from pyVmomi import vim
 import json
 import boto3
+import os
 
 from pyVim.connect import SmartConnect
 from pyVmomi import vim
 import ssl
 
 
-s                   =   ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-s.verify_mode       =   ssl.CERT_NONE
-si                  =   SmartConnectNoSSL(host="HOST", user="USER", pwd="PASSWORD")
-content             =   si.content
 
-# Method that populates objects of type vimtype
-def get_all_objs(content, vimtype):
-        obj         = {}
-        container   = content.viewManager.CreateContainerView(content.rootFolder, vimtype, True)
+# Declaring variables
 
-        for managed_object_ref in container.view:
-                obj.update({managed_object_ref: managed_object_ref.name})
-        return obj
+HOST                  = os.getenv('MYHOST')
+USER                  = os.getenv('MYUSER')
+PASSWORD              = os.getenv('MYPASSWORD')
+bucket                = 'wmwaredata'
+fileName              = 'machines.json'
+s3                    = boto3.client('s3')
+s                     = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+s.verify_mode         = ssl.CERT_NONE
+si                    = SmartConnectNoSSL(host=HOST, user=USER, pwd=PASSWORD)
+content               = si.content
 
-#Calling above method
-getAllVms           =   get_all_objs(content, [vim.VirtualMachine])
 
-fileName            =   'machines' + '.json'
-data                =   []
-s3 = boto3.client('s3')
-bucket ='wmware-data-visualisation'
-
-#Iterating each vm object and printing its name
-for vm in getAllVms:
+def lambda_handler(event, context):
+    datacenter = content.rootFolder.childEntity[0]
+    vms = datacenter.vmFolder.childEntity
+    data               =   []
+    #Iterating each vm object and printing its name
+    for vm in vms:
         VMData  = {}
         VMData['Name']                  = vm.summary.config.name
         VMData['PowerState']            = vm.summary.runtime.powerState
@@ -55,13 +54,21 @@ for vm in getAllVms:
         VMData['MaxCpuUsage']           = vm.summary.runtime.maxCpuUsage
         VMData['MaxMemoryUsage']        = vm.summary.runtime.maxMemoryUsage
         VMData['ConnectionState']       = vm.summary.runtime.connectionState
-
+        VMData['Version']               = vm.config.version
+        
         data.append(VMData)
 
-# Writing the data to a JSON file
-with open(fileName, 'w') as json_file:
-    makejson = json.dump(data, json_file, indent=4, sort_keys=True, default=str)
+        uploads   = bytes(json.dumps(data, indent=4, sort_keys=True, default=str).encode('UTF-8'))
 
-s3.put_object(Bucket=bucket, Key=fileName, Body=makejson)
+        # Uploading JSON file to s3 bucket
+        s3.put_object(Bucket=bucket, Key=fileName, Body=uploads)
 
-print('JSON file Created Successfully')
+    message = {
+      'message': 'JSON file succesfully created and uploaded to S3'
+       }
+
+    return {
+       'statusCode': 200,
+       'headers': {'event-Type': 'application/json'},
+       'body': json.dumps(message)
+       }
