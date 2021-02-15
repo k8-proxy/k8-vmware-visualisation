@@ -89,10 +89,13 @@ If you are using **Ubuntu**, to start the http server on an specific port, for i
 <a id="screenshots"></a>
 ## Screenshots
 
-Run this notebook to take screenshots of the html pages. 
+Run this notebook to take screenshots of the html pages. It uses selenium package, therefore you need to have Chrome installed in the default location for each system:
 
-You must have the html pages running on a local server for it to work. 
+- Mac users with Homebrew installed: brew tap homebrew/cask && brew cask install chromedriver
+- Debian based Linux distros: sudo apt-get install chromium-chromedriver
+- Windows users with Chocolatey installed: choco install chromedriver
+
+You also must have the html pages running on a local server for it to work. 
 
 Taken screenshots are saved to data folder.
-
 
