@@ -1,233 +1,713 @@
 [
     {
+        "hash": "902403ed9f9834e1b393dd05d308e514c536981b",
+        "hash_short": "902403e",
+        "release_date": "2021-01-08T16:40:48Z",
+        "release_name": "",
+        "release_tag": "v0.5.1",
+        "repo_name": "GW-proxy",
+        "repo_url": "https://github.com/k8-proxy/GW-proxy"
+    },
+    {
+        "hash": "8863a22928d970c881a078ebd581d2664beefb33",
+        "hash_short": "8863a22",
+        "release_date": "2020-10-26T13:40:49Z",
+        "release_name": "",
+        "release_tag": "v0.1.0",
+        "repo_name": "k8-reverse-proxy",
+        "repo_url": "https://github.com/k8-proxy/k8-reverse-proxy"
+    },
+    {
+        "hash": "21f9b5444d3a30e1a46475683df5288376e596fd",
+        "hash_short": "21f9b54",
+        "release_date": "2020-10-29T22:34:08Z",
+        "release_name": "* Processed 18k gov uk site files via test data solution and syncing to s2\r\n\r\n* Change hashing method from sha-1 to share-256\r\n\r\n* Process and generate metadata in postgres db for virus files\r\n\r\n* Document how test data solution can be used for normal files\r\n\r\n* Test files with different type of supported compression Zip, 7z, gz, tar, rar_\r\n\r\n* Create a program to create a multilevel compressed test file with malicious content.\r\n\r\n* Configured Postgres db to capture metadata \r\n\r\n* Compressed file generator \r\n\r\n* Multilevel compression\r\n\r\n* Batch processing added for both scraper and file processor\r\n\r\n* Space and ec2 bug fixes\r\n",
+        "release_tag": "k-8-test-data-v0.4",
+        "repo_name": "k8-test-data",
+        "repo_url": "https://github.com/k8-proxy/k8-test-data"
+    },
+    {
+        "hash": "1f4ec83730357d62e80d494eb12b54a52c1f1c44",
+        "hash_short": "1f4ec83",
+        "release_date": "2020-10-14T10:27:07Z",
+        "release_name": "### Features\r\n\r\n* Integration of Distribution Api , GW_crawler , Storage , Rabbit mq , glass_rebuild , file processor and s3 sync modules\r\n\r\n* File processing bug fixes, support for icap_rebuild file and xml report, fixed processing of zip files\r\n\r\n* Exception handling in all places\r\n\r\n* Sy sync and creating folder in s3 and storing files under extension name as folder name\r\n\r\n* The integration is tested and imporved efficiency\r\n\r\n* Deployment of codebase in ec2 instance\r\n\r\n* Bundle zip will contain metadata.json, rebuild_xml , rebuild file , virustotal report, original file inside zip file \r\n\r\n* Gloabl hashing is done and the files in bundle zip are stored with hash name\r\n\r\n* Collection of 10000 files in glasswall s3 under bucket k8-test-data ( in progress )\r\n\r\n* Refactoring of api calls configartable from .env files",
+        "release_tag": "k-8-test-data-v0.3",
+        "repo_name": "k8-test-data",
+        "repo_url": "https://github.com/k8-proxy/k8-test-data"
+    },
+    {
+        "hash": "ae3e8af96a6ab76ed4a639e09fd0ec5b802b8c4b",
+        "hash_short": "ae3e8af",
+        "release_date": "2020-10-06T16:00:25Z",
+        "release_name": "## Features\r\n\r\n\r\n* Web scraping for below sites has been completed\r\n    * VirusShare: https://virusshare.com/\r\n    * The Zoo: https://github.com/ytisf/theZoo/\r\n    * Malshare: https://malshare.com/\r\n    * Das Malwerk: http://dasmalwerk.eu/\r\n    * Tek Defecnce: http://www.tekdefense.com/\r\n* All entities now run in different pods and are independent of each other and communicate through endpoints.\r\n* Adding Minio to the architecture.\r\n* Adding S3 sync with Minio\r\n* Adding Rabbit MQ\r\n\r\n",
+        "release_tag": "k-8-test-data-v0.2",
+        "repo_name": "k8-test-data",
+        "repo_url": "https://github.com/k8-proxy/k8-test-data"
+    },
+    {
+        "hash": "ded1acdfc9de664bf8ea29a8fcda9b4a99b1636a",
+        "hash_short": "ded1acd",
+        "release_date": "2020-11-24T12:09:26Z",
+        "release_name": "Added a data-test-id to the Request History page/pagination component.",
+        "release_tag": "v1.0.1-beta",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "8680015bb610d485bcb0450fcb71c8337a64565d",
+        "hash_short": "8680015",
+        "release_date": "2020-11-24T11:02:38Z",
+        "release_name": "## Features/Changes\r\n- Updates to dashboard: new charts and fixes for edge cases.\r\n- Added test Ids for puppeteer tests.",
+        "release_tag": "v1.0.0-beta",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "38c1c6d1fed10c5a323068fa4e5ed41935eb1707",
+        "hash_short": "38c1c6d",
+        "release_date": "2020-10-30T10:51:50Z",
+        "release_name": "Styling updates for Jake.\r\nImproved Date Time picker.",
+        "release_tag": "v1.9.2-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "3ddb4f9f745dc0834b04ab0fb6fe4b199281cfd4",
+        "hash_short": "3ddb4f9",
+        "release_date": "2020-10-23T16:14:49Z",
+        "release_name": "## Features/Changes\r\nUpdated components and bug fixes.\r\nStyling updates.",
+        "release_tag": "v1.8.2-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "80fb29cf8a561c7b12814c8132ac33f4b6650f1a",
+        "hash_short": "80fb29c",
+        "release_date": "2020-10-19T14:39:54Z",
+        "release_name": "## Features/Changes\r\n- Styling Updates\r\n- CSS Transitions\r\n- Improved File Drop\r\n- Improved Date pickers",
+        "release_tag": "v1.7.2-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "80fb29cf8a561c7b12814c8132ac33f4b6650f1a",
+        "hash_short": "80fb29c",
+        "release_date": "2020-10-13T16:10:24Z",
+        "release_name": "## Features/Changes\r\nEnhanced navbar.\r\nKubernetes service and deployment defined.\r\nHelm chart created.\r\nCI workflow for kubernetes + helm validation and testing.\r\nInstalled react-dropzone, react-promise-tracker, react-toast-notifications and react-xml-parser.\r\n\r\n### File Drop Page\r\nFile drop page now works locally, can drop a file and it will be sent to the same file drop API as [file-drop.co.uk](https://file-drop.co.uk/).\r\n\r\nThe File Drop React code has been ported from the file-drop site as well.",
+        "release_tag": "v1.6.2-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "f2d6436635747fed183f381a0d82415966334d87",
+        "hash_short": "f2d6436",
+        "release_date": "2020-10-12T09:40:03Z",
+        "release_name": "- Dashboard\r\n- Updates to request history page\r\n- Udates to policy page\r\n- Styling updates\r\n- Change to CI/CD workflows (new build script for gh-pages)\r\n- Chart.js and react-chartjs-2 installed",
+        "release_tag": "v1.5.2-pre-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "1049064e1404cc0f0fc16ac6ea675484e5111a7c",
+        "hash_short": "1049064",
+        "release_date": "2020-10-01T12:00:14Z",
+        "release_name": "## Features/Changes\r\nMore styling and css updates.\r\nSOW Checklist view added, link from the login page under the 'Forgotten Password' link.\r\n\r\n### Request History Page\r\nFile Type and Outcome filters added.\r\nDate-Time Picker added.\r\nFile Info modal updated to cover more of the screen, rather than a sidebar.\r\nCan now sort by each column in the table (timestamp, alphabetical file type etc...).\r\n\r\n### Policy Page\r\nMoved links from navbar to tabs on the policy page.\r\n'Current' tab now has Allow/Sanitise radio toggles added for each file type.\r\n'History' tab now has a table with an example previous policy. Modal not implemented\r\n",
+        "release_tag": "v1.4.2-pre-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "b7fc1244bfc41be993b47d1f806b434636ea6b9f",
+        "hash_short": "b7fc124",
+        "release_date": "2020-09-24T10:23:13Z",
+        "release_name": "## Features/Changes\r\n- Styling and css updates\r\n- MaterialUI Installed\r\n- Backdrop component\r\n\r\n### Request History Page\r\n- Requests Table\r\n- File Info Sidebar Modal\r\n- Filter component\r\n- Checkbox component\r\n",
+        "release_tag": "v1.3.2-pre-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "0aff14afac0a27d094b5a36d29e4683c2d5392ee",
+        "hash_short": "0aff14a",
+        "release_date": "2020-09-22T09:50:08Z",
+        "release_name": "Navbar more accurately represents designs.\r\nPadlock removed from users page.\r\nStyling and css updates.",
+        "release_tag": "v1.2.2-pre-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "f21db755fd768b69f75be7110a780bf632128794",
+        "hash_short": "f21db75",
+        "release_date": "2020-09-20T19:58:20Z",
+        "release_name": "https://github.com/k8-proxy/p-ui-wireframes/pull/20\r\n\r\n-User Context and Auth skeleton\r\n-Login page\r\n-Forgotten password page\r\n-Updated Navbar\r\n-Table in Configuration page\r\n-Table in Users page",
+        "release_tag": "v1.2.1-pre-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "667600ba94321ded463455eea14b0d8ba12882f9",
+        "hash_short": "667600b",
+        "release_date": "2020-09-17T15:51:46Z",
+        "release_name": "Repository moved to https://github.com/k8-proxy/p-ui-wireframes.\r\nForgotten password.\r\nCaptcha.\r\nNew input component.",
+        "release_tag": "v1.1.1-pre-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "74a686b0458ba423e32c20ec47f01b9d2e5bbdd3",
+        "hash_short": "74a686b",
+        "release_date": "2020-09-15T13:58:09Z",
+        "release_name": "Fix for missing assets on gh-pages",
+        "release_tag": "v1.0.1-pre-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "f5ddbf3c8b76539ef89acf2d99e9a0561a5e2e2b",
+        "hash_short": "f5ddbf3",
+        "release_date": "2020-09-15T12:36:09Z",
+        "release_name": "- Glasswall React-App installed.\r\n- Login form added.",
+        "release_tag": "v1.0.0-pre-alpha",
+        "repo_name": "p-ui-wireframes",
+        "repo_url": "https://github.com/k8-proxy/p-ui-wireframes"
+    },
+    {
+        "hash": "ffbcabeaba991606b3e86d9f44f08fe4e2f4a26d",
+        "hash_short": "ffbcabe",
+        "release_date": "2021-01-20T09:34:25Z",
+        "release_name": "",
+        "release_tag": "v0.1.1",
+        "repo_name": "s-k8-proxy-rebuild",
+        "repo_url": "https://github.com/k8-proxy/s-k8-proxy-rebuild"
+    },
+    {
+        "hash": "596d64ce92842fba61008d30db1a9cc6dc2871aa",
+        "hash_short": "596d64c",
+        "release_date": "2020-10-26T13:40:00Z",
+        "release_name": "",
+        "release_tag": "v0.1.0",
+        "repo_name": "s-k8-proxy-rebuild",
+        "repo_url": "https://github.com/k8-proxy/s-k8-proxy-rebuild"
+    },
+    {
+        "hash": "b1a63ef5397c046321932cbd1a38ab70fd856694",
+        "hash_short": "b1a63ef",
+        "release_date": "2020-10-20T12:59:59Z",
+        "release_name": "- JMeter test plan is configured to use ICAP client to send traffic directly to the ICAP server\r\n- Configured kubernetes cluster with a traffic generator and Docker image to generate the number of pods using the JMeter script.\r\n- Implemented mechanism to retrieve required files for processing from MinIO\r\n- Implemented mechanism to output processed files to MinIO\r\n- Implemented assertion mechanism that validates the response code returned\r\n- Implemented Influx DB UI Logging to retrieve the performance logs\r\n- Created Grafana dashboard to visualize the test metrics to show detailed metrics\r\n- Implemented the ability to fetch the ICAP server metrics to influx DB",
+        "release_tag": "v0.1.0",
+        "repo_name": "p-k8-jmeter-test-engine",
+        "repo_url": "https://github.com/k8-proxy/p-k8-jmeter-test-engine"
+    },
+    {
+        "hash": "ffb7276c17e4cfccea404ae0ce5b0374961b9c8a",
+        "hash_short": "ffb7276",
+        "release_date": "2020-10-02T18:12:35Z",
+        "release_name": "This release includes the following:\r\n- Docker image that support JMeter on OpenJDK 8 JRE and icap-client\r\n- Github Action for the deployment of Minio, InfluxDB, ELK, Prometheus and Grafana on native k8s clusters.\r\n- Support for running Jobs using Powershell script\r\n- Support JMX script that:\r\n   - use icap-client for testing \r\n   - copy test results to Minio\r\n   - send test metrics to Grafana",
+        "release_tag": "v1-rc.1",
+        "repo_name": "p-k8-jmeter-test-engine",
+        "repo_url": "https://github.com/k8-proxy/p-k8-jmeter-test-engine"
+    },
+    {
+        "hash": "07e073d2c7781d2073ef42199903507d7c60ece2",
+        "hash_short": "07e073d",
+        "release_date": "2021-02-19T11:39:43Z",
+        "release_name": "- Simplified instructions that can help setup the framework in 10 mins\r\n- Error Rate % in Performance Dashboard\r\n- Better error case troubleshooting option to analyze files before and after processing.\r\n  - Test Data bucket will contain out folder and it will have files in case of error situations. \r\n  - Each prefix will have own folder with those files.\r\n- Setup link to configure the framework\r\n- Single click Update button to update to latest version of the framework.",
+        "release_tag": "v0.3",
+        "repo_name": "aws-jmeter-test-engine",
+        "repo_url": "https://github.com/k8-proxy/aws-jmeter-test-engine"
+    },
+    {
+        "hash": "47dd00c402359a072c2fe614b1be6eb86d2fe06a",
+        "hash_short": "47dd00c",
         "release_date": "2021-01-29T12:29:04Z",
         "release_name": "- Instructions simplified\r\n- Bugs fixed\r\n- New setup UI introduced",
         "release_tag": "v0.2.1",
-        "repo_repo": "aws-jmeter-test-engine",
+        "repo_name": "aws-jmeter-test-engine",
         "repo_url": "https://github.com/k8-proxy/aws-jmeter-test-engine"
     },
     {
+        "hash": "5b6458c05ddff8fa085ff12d9ac4e1e7bad1092c",
+        "hash_short": "5b6458c",
         "release_date": "2021-01-22T14:06:01Z",
         "release_name": "* UI Updates\r\n   - interface supports trigger load\r\n   - UI Interface supports load agains direct icap, via proxy offline site and proxied Sharepoint\r\n   - stop tests from UI\r\n   - performance test summary results table\r\n* ICAPServer Performance Test and Analytics Ubuntu AMI is published in all supported regions (AWS Ireland, North Virginia, Oregon and North California)\r\n* Implemented results automatic analyser.\r\n* Both dashboard and load generators are now based on Ubuntu 20.04\r\n* Weekly packer build AMI/OVA with github actions.",
         "release_tag": "v0.2.0",
-        "repo_repo": "aws-jmeter-test-engine",
+        "repo_name": "aws-jmeter-test-engine",
         "repo_url": "https://github.com/k8-proxy/aws-jmeter-test-engine"
     },
     {
+        "hash": "1a2e3cd242375d76dee9b994f1bc48ded9ac0bd4",
+        "hash_short": "1a2e3cd",
         "release_date": "2020-10-20T13:01:48Z",
         "release_name": "- Configured AWS Cloud Formation stack to automatically create the infrastructure to generate traffic & run tests\r\n- Implemented input mechanism to retrieve required files for processing from S3\r\n- Implemented assertion mechanism that validates the response code returned from ICAP server.\r\n- Implemented Influx DB logging solution to log the performance metrics\r\n- Implemented monitoring feature using Grafana for detailed metrics dashboard display\r\n- Implemented the mechanism to dynamically create EC2 instances based on the number of users in the test run.\r\n- Implemented a mechanism to dynamically assign users to each ec2 instance.",
         "release_tag": "v0.1.0",
-        "repo_repo": "aws-jmeter-test-engine",
+        "repo_name": "aws-jmeter-test-engine",
         "repo_url": "https://github.com/k8-proxy/aws-jmeter-test-engine"
     },
     {
+        "hash": "5fd372b33302bdaa6334b7ea6b037e78a5eeab4e",
+        "hash_short": "5fd372b",
         "release_date": "2020-12-18T17:53:54Z",
         "release_name": "<strong>Release Notes for v1.0.0</strong>\r\n<li>Policy Management applied to files rebuilt through Cloud Version.</li>\r\n<li>Maintained History for Policy Management changes (Past/Current).</li>\r\n<li>Added Glasswall icon in the MAC build.</li>\r\n<li>Removed Electron from Menu bar on MAC build.</li>\r\n<li>Added Geotiff file support to the Policy Management both Docker and Cloud</li>\r\n<li>Analysis of files rebuild has been integrated in cloud and docker.</li>\r\n<li>New docker rebuild image TAG integrated.</li>\r\n<li>Bugs Fixes:</li>\r\nCorrect File is getting saved on custom location after rebuild.\r\nFixed sorting in-case of multi page\r\nFixed alignment under session page.",
         "release_tag": "v1.0.0",
-        "repo_repo": "glasswall-desktop",
+        "repo_name": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
+        "hash": "874c31f616d8ea137124c085f572bb7b03bbbff8",
+        "hash_short": "874c31f",
         "release_date": "2020-11-27T12:31:01Z",
         "release_name": "<strong>Release Notes for v0.9.0</strong>\r\n<li>Added Threat Intelligence to the cloud rebuild, Displayed threat level on the UI</li>\r\n<li>Watermark added for rebuild PDF file.</li>\r\n<li>Buy Token feature added under setting.</li>\r\n<li>Bugs Fixes:</li>\r\nOn rebuilding the file using Cloud user is displayed the wrong time under session.\r\nFixed sorting in-case of multi page\r\nFixed alignment under session page.\r\nFixed analysis report earlier it was showing High for all the files.\r\nError message being displayed incase file is blocked due to Policy.\r\nFixed alignment on mouse hover on Flat and Hierarchy label on Cloud and Docker page\r\nSession page not getting loaded in case no session is present.\r\nRaw Logs added in multi-line format in case logs are very long. (Removed horizontal scroll bar)\r\nColor of all the buttons under different pages made in sync.\r\nAligned the text on each page\r\nProvide an interface to update the GW image name.\r\nSaving files in destination folder as it get processed.\r\n",
         "release_tag": "v0.9.0",
-        "repo_repo": "glasswall-desktop",
+        "repo_name": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
+        "hash": "f251dbfd4f872836a707e6c34f822db9e15fa4c6",
+        "hash_short": "f251dbf",
         "release_date": "2020-11-21T13:39:04Z",
         "release_name": "<strong>Release Notes for v0.1.7</strong>\r\n<li>Policy Control & Management : UI and Backend (Policy view, Edit, Save, Apply to docker container).</li>\r\n<li>Threat Analysis : Integrated Threat analysis of files rebuilt with docker.</li>\r\n<li>Integrated processing target with rebuilt sessions metadata : Cloud/Docker.</li>\r\n<li>UI Enhancement and some minor fixes.</li>\r\n",
         "release_tag": "v0.1.7",
-        "repo_repo": "glasswall-desktop",
+        "repo_name": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
+        "hash": "7ba82a1d8ff65e4423ad166cca6c35577cae9cb6",
+        "hash_short": "7ba82a1",
         "release_date": "2020-11-13T20:20:58Z",
         "release_name": "<strong>Release Notes for v0.1.6</strong>\r\n<li>Added support for Parallel & Sequential execution of requests with docker.</li>\r\n<li>Added Threat Intelligence to the application, Displayed threat level on the UI.</li>\r\n<li>Session History:  Added session history tab which list all the rebuild sessions (Cloud and Local).</li>\r\n<li>Rebuild & File analysis event logging:  Added separate tab to capture RAW logs using a file backed logger.</li>\r\n<li>Made server configuration configurable.</li>\r\n<li>Fixed google universal analytics issues and downloads are now visible on GA.</li>\r\n<li>UI Enhancement and some minor fixes.</li>\r\n",
         "release_tag": "v0.1.6",
-        "repo_repo": "glasswall-desktop",
+        "repo_name": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
+        "hash": "65d4d2245f52616673837322c8873d2f3b0d62f3",
+        "hash_short": "65d4d22",
         "release_date": "2020-11-06T16:48:45Z",
         "release_name": "<strong>Release Notes for v0.1.5</strong>\r\n<li>Local rebuild health check : To check the local rebuild configuration and it state</li>\r\n  &nbsp;  &nbsp;  &nbsp;  &nbsp; a) If docker Installed.<br>\r\n  &nbsp;  &nbsp;  &nbsp;  &nbsp; b)f docker running.<br>\r\n  &nbsp;  &nbsp;  &nbsp;  &nbsp; c) If GW image present else pull.<br>\r\n &nbsp;  &nbsp;  &nbsp;  &nbsp;  d) If GW image licensed.<br>\r\n<li>Health check event logging: Added the event logs for docker health check.</li>\r\n<li>Rebuild & File analysis event logging: Added the event logs for local Rebuild and file analysis.\r\n<li>Added health check functionality on UI.</li>\r\n<li>Made output path persistent across rebuilds.</li>\r\n<li>UI Enhancement and some minor fixes</li>",
         "release_tag": "v0.1.5",
-        "repo_repo": "glasswall-desktop",
+        "repo_name": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
+        "hash": "8933e16f6e3bb329b6fdd38b682e236c6d5474b7",
+        "hash_short": "8933e16",
         "release_date": "2020-10-29T16:09:16Z",
         "release_name": "<strong> Release Notes for v0.1.4 </strong>\r\n<li>Processing rebuild locally through Docker after pulling the docker image.</li>\r\n<li>Creating analysis report for rebuilt files locally through Docker.</li>\r\n<li>Added option for User to rebuild app either locally or through cloud.</li>\r\n<li>Modified the ReadMe with steps to run rebuild locally through docker.</li>\r\n<li>Added option for User to rebuild app either locally or through cloud.</li>\r\n<li>Git link for above changes: https://github.com/k8-proxy/glasswall-desktop/pull/95</li>\r\n<li>Creating analysis report for rebuilt files locally through Docker.</li>\r\n",
         "release_tag": "v0.1.4",
-        "repo_repo": "glasswall-desktop",
+        "repo_name": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
+        "hash": "7d3dc557d93f1ffaa88667599e60e9dee40de762",
+        "hash_short": "7d3dc55",
         "release_date": "2020-10-21T13:13:12Z",
         "release_name": "1.  Fixed Video link\r\n2. Fixed Help Shortcut\r\n4. Updated ReadMe for the new version",
         "release_tag": "v0.1.3",
-        "repo_repo": "glasswall-desktop",
+        "repo_name": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
+        "hash": "83a601cbdd6bc6c8cbe58e7179d5f30d93c76897",
+        "hash_short": "83a601c",
         "release_date": "2020-10-20T23:38:02Z",
         "release_name": "1. FIxed website link\r\n2. Fixed Linux broken link",
         "release_tag": "v0.1.2",
-        "repo_repo": "glasswall-desktop",
+        "repo_name": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
-        "release_date": null,
-        "release_name": "Bug fixing",
-        "release_tag": "v0.1.1",
-        "repo_repo": "glasswall-desktop",
-        "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
-    },
-    {
-        "release_date": null,
-        "release_name": "Bugs fixing",
-        "release_tag": "v0.1.1",
-        "repo_repo": "glasswall-desktop",
-        "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
-    },
-    {
+        "hash": "62b23f1fb9d1258a066a3a70863d47247cc8b369",
+        "hash_short": "62b23f1",
         "release_date": "2020-10-19T07:29:09Z",
         "release_name": "First release - online version of GW desktop",
         "release_tag": "v0.1.0",
-        "repo_repo": "glasswall-desktop",
+        "repo_name": "glasswall-desktop",
         "repo_url": "https://github.com/k8-proxy/glasswall-desktop"
     },
     {
-        "release_date": "2021-01-19T09:07:32Z",
-        "release_name": "First tag with stable version of gp-load-balancer",
-        "release_tag": "v0.1.0",
-        "repo_repo": "gp-load-balancer",
+        "hash": "5878603f1fc0e2d73a6a50cdc03717412024cefd",
+        "hash_short": "5878603",
+        "release_date": "2021-02-08T12:57:47Z",
+        "release_name": "v0.0.10",
+        "release_tag": "v0.0.10",
+        "repo_name": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "hash": "4ae32da404d34a86e3fb4dcb3c6c7f5383738e25",
+        "hash_short": "4ae32da",
+        "release_date": "2021-02-08T12:52:06Z",
+        "release_name": "v0.0.9",
+        "release_tag": "v0.0.9",
+        "repo_name": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "hash": "8c4d3e5170143c0a480b554f291ec578cfdc4cf5",
+        "hash_short": "8c4d3e5",
+        "release_date": "2021-02-08T12:46:38Z",
+        "release_name": "v0.0.8",
+        "release_tag": "v0.0.8",
+        "repo_name": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "hash": "304a243e134f3de329bde5fda758689bfb3cea8f",
+        "hash_short": "304a243",
+        "release_date": "2021-02-08T10:47:46Z",
+        "release_name": "v0.0.7",
+        "release_tag": "v0.0.7",
+        "repo_name": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "hash": "c4e062de55b2bfc8419f63a673d620ce91daa10f",
+        "hash_short": "c4e062d",
+        "release_date": "2021-02-08T10:39:12Z",
+        "release_name": "v0.0.6",
+        "release_tag": "v0.0.6",
+        "repo_name": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "hash": "52e4cefcdf3207061df780e99c83156eb355cb42",
+        "hash_short": "52e4cef",
+        "release_date": "2021-02-08T10:32:16Z",
+        "release_name": "v0.0.5",
+        "release_tag": "v0.0.5",
+        "repo_name": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "hash": "e4cc1c18f04e2433c7c76bb14c2fea378be82d18",
+        "hash_short": "e4cc1c1",
+        "release_date": "2021-02-08T10:24:28Z",
+        "release_name": "v0.0.4",
+        "release_tag": "v0.0.4",
+        "repo_name": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "hash": "35e01de0cdf12b9b961f85a219dee818aff4fcc0",
+        "hash_short": "35e01de",
+        "release_date": "2021-02-08T10:10:36Z",
+        "release_name": "v0.0.3",
+        "release_tag": "v0.0.3",
+        "repo_name": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "hash": "31640eeaaa99f1d471d04a89795dde240a28149b",
+        "hash_short": "31640ee",
+        "release_date": "2021-02-08T09:56:27Z",
+        "release_name": "v0.0.2",
+        "release_tag": "v0.0.2",
+        "repo_name": "gp-sharepoint",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+    },
+    {
+        "hash": "9027b550a263af153220a3a98377b8e34cf4e7de",
+        "hash_short": "9027b55",
+        "release_date": "2021-02-15T12:18:08Z",
+        "release_name": "",
+        "release_tag": "v1.0.1",
+        "repo_name": "icap-infrastructure",
+        "repo_url": "https://github.com/k8-proxy/icap-infrastructure"
+    },
+    {
+        "hash": "539a0ed4da97c445bcfa27e8fa5185ccb2494d8e",
+        "hash_short": "539a0ed",
+        "release_date": "2020-11-26T12:49:18Z",
+        "release_name": "",
+        "release_tag": "v1.0.0",
+        "repo_name": "icap-infrastructure",
+        "repo_url": "https://github.com/k8-proxy/icap-infrastructure"
+    },
+    {
+        "hash": "61ce641da6c719f83ecb50988898b1dffdebdc56",
+        "hash_short": "61ce641",
+        "release_date": "2021-02-15T11:04:31Z",
+        "release_name": "",
+        "release_tag": "v0.1.1",
+        "repo_name": "gp-load-balancer",
         "repo_url": "https://github.com/k8-proxy/gp-load-balancer"
     },
     {
+        "hash": "f98e7d85b2c94f6a3e32bd64ff6f0f6217ed2107",
+        "hash_short": "f98e7d8",
+        "release_date": "2021-01-19T09:07:32Z",
+        "release_name": "First tag with stable version of gp-load-balancer",
+        "release_tag": "v0.1.0",
+        "repo_name": "gp-load-balancer",
+        "repo_url": "https://github.com/k8-proxy/gp-load-balancer"
+    },
+    {
+        "hash": "34a3f777159ff566102850064d2017a6054b7591",
+        "hash_short": "34a3f77",
+        "release_date": "2021-01-27T17:38:40Z",
+        "release_name": "Enhancements to process zip files and skip if it contains json and xml files",
+        "release_tag": "v0.5.1",
+        "repo_name": "k8-rebuild-rest-api",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild-rest-api"
+    },
+    {
+        "hash": "d1d9aa68a29e6f03578027778f7aef7dc71b599e",
+        "hash_short": "d1d9aa6",
+        "release_date": "2021-01-14T17:35:13Z",
+        "release_name": "",
+        "release_tag": "v0.5.0",
+        "repo_name": "k8-rebuild-rest-api",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild-rest-api"
+    },
+    {
+        "hash": "5878603f1fc0e2d73a6a50cdc03717412024cefd",
+        "hash_short": "5878603",
         "release_date": "2021-02-08T12:57:47Z",
         "release_name": "v0.0.10",
         "release_tag": "v0.0.10",
-        "repo_repo": "gp-sharepoint",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+        "repo_name": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
+        "hash": "4ae32da404d34a86e3fb4dcb3c6c7f5383738e25",
+        "hash_short": "4ae32da",
         "release_date": "2021-02-08T12:52:06Z",
         "release_name": "v0.0.9",
         "release_tag": "v0.0.9",
-        "repo_repo": "gp-sharepoint",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+        "repo_name": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
+        "hash": "8c4d3e5170143c0a480b554f291ec578cfdc4cf5",
+        "hash_short": "8c4d3e5",
         "release_date": "2021-02-08T12:46:38Z",
         "release_name": "v0.0.8",
         "release_tag": "v0.0.8",
-        "repo_repo": "gp-sharepoint",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+        "repo_name": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
+        "hash": "304a243e134f3de329bde5fda758689bfb3cea8f",
+        "hash_short": "304a243",
         "release_date": "2021-02-08T10:47:46Z",
         "release_name": "v0.0.7",
         "release_tag": "v0.0.7",
-        "repo_repo": "gp-sharepoint",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+        "repo_name": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
+        "hash": "c4e062de55b2bfc8419f63a673d620ce91daa10f",
+        "hash_short": "c4e062d",
         "release_date": "2021-02-08T10:39:12Z",
         "release_name": "v0.0.6",
         "release_tag": "v0.0.6",
-        "repo_repo": "gp-sharepoint",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+        "repo_name": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
+        "hash": "52e4cefcdf3207061df780e99c83156eb355cb42",
+        "hash_short": "52e4cef",
         "release_date": "2021-02-08T10:32:16Z",
         "release_name": "v0.0.5",
         "release_tag": "v0.0.5",
-        "repo_repo": "gp-sharepoint",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+        "repo_name": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
+        "hash": "e4cc1c18f04e2433c7c76bb14c2fea378be82d18",
+        "hash_short": "e4cc1c1",
         "release_date": "2021-02-08T10:24:28Z",
         "release_name": "v0.0.4",
         "release_tag": "v0.0.4",
-        "repo_repo": "gp-sharepoint",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+        "repo_name": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
+        "hash": "35e01de0cdf12b9b961f85a219dee818aff4fcc0",
+        "hash_short": "35e01de",
         "release_date": "2021-02-08T10:10:36Z",
         "release_name": "v0.0.3",
         "release_tag": "v0.0.3",
-        "repo_repo": "gp-sharepoint",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
+        "repo_name": "gp-sharepoint-plugins",
+        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
+        "hash": "31640eeaaa99f1d471d04a89795dde240a28149b",
+        "hash_short": "31640ee",
         "release_date": "2021-02-08T09:56:27Z",
         "release_name": "v0.0.2",
         "release_tag": "v0.0.2",
-        "repo_repo": "gp-sharepoint",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint"
-    },
-    {
-        "release_date": "2021-02-08T12:57:47Z",
-        "release_name": "v0.0.10",
-        "release_tag": "v0.0.10",
-        "repo_repo": "gp-sharepoint-plugins",
+        "repo_name": "gp-sharepoint-plugins",
         "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
-        "release_date": "2021-02-08T12:52:06Z",
-        "release_name": "v0.0.9",
-        "release_tag": "v0.0.9",
-        "repo_repo": "gp-sharepoint-plugins",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+        "hash": "79b14699988edbe0fb0c64a3b2c4d4c0eb60587e",
+        "hash_short": "79b1469",
+        "release_date": "2021-01-19T09:50:26Z",
+        "release_name": "First tag for stable version of k8-rebuild-file-drop",
+        "release_tag": "v0.5.0",
+        "repo_name": "k8-rebuild-file-drop",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild-file-drop"
     },
     {
-        "release_date": "2021-02-08T12:46:38Z",
-        "release_name": "v0.0.8",
-        "release_tag": "v0.0.8",
-        "repo_repo": "gp-sharepoint-plugins",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+        "hash": "34a3f777159ff566102850064d2017a6054b7591",
+        "hash_short": "34a3f77",
+        "release_date": "2021-01-27T17:38:40Z",
+        "release_name": "Enhancements to process zip files and skip if it contains json and xml files",
+        "release_tag": "v0.5.1",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
-        "release_date": "2021-02-08T10:47:46Z",
-        "release_name": "v0.0.7",
-        "release_tag": "v0.0.7",
-        "repo_repo": "gp-sharepoint-plugins",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+        "hash": "d1d9aa68a29e6f03578027778f7aef7dc71b599e",
+        "hash_short": "d1d9aa6",
+        "release_date": "2021-01-14T17:35:13Z",
+        "release_name": "",
+        "release_tag": "v0.5.0",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
-        "release_date": "2021-02-08T10:39:12Z",
-        "release_name": "v0.0.6",
-        "release_tag": "v0.0.6",
-        "repo_repo": "gp-sharepoint-plugins",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+        "hash": "79b14699988edbe0fb0c64a3b2c4d4c0eb60587e",
+        "hash_short": "79b1469",
+        "release_date": "2021-01-19T09:50:26Z",
+        "release_name": "First tag for stable version of k8-rebuild-file-drop",
+        "release_tag": "v0.5.0",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
-        "release_date": "2021-02-08T10:32:16Z",
-        "release_name": "v0.0.5",
-        "release_tag": "v0.0.5",
-        "repo_repo": "gp-sharepoint-plugins",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+        "hash": "ce00c47c470529d47061ed25f4faf064e416b470",
+        "hash_short": "ce00c47",
+        "release_date": "2021-02-15T11:03:05Z",
+        "release_name": "",
+        "release_tag": "v0.1.2",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
-        "release_date": "2021-02-08T10:24:28Z",
-        "release_name": "v0.0.4",
-        "release_tag": "v0.0.4",
-        "repo_repo": "gp-sharepoint-plugins",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+        "hash": "80db47c82f60311d49140253dd5418d874cb85a5",
+        "hash_short": "80db47c",
+        "release_date": "2021-02-03T14:49:50Z",
+        "release_name": "Fixes on v0.1.1:\r\n1.- Some zip files were not processed and moved directly to error folder. The reason was that the zip files were almost 200mb.\r\n2.-  Logs are improved: Log folder contains logs from files that are not processed correctly. Other log details can be found in GlasswallFileProcessingStatus.txt under each processed zip file (in both error or output folder).\r\n\r\nDeliverables:\r\nLatest File-Drop OVA: https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/SOW-REST/k8-rebuild-674a31a33552c05f684bea4f3641774ff777e673.ova - this OVA has the Geotiff to allow.\r\nDocumentation: https://github.com/k8-proxy/k8-rebuild-folder-to-folder/blob/main/README.md\r\nService OVA: https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/k8-rebuild-folder-to-folder/k8-rebuild-folder-to-folder-1f57e688e7eca0801047a1d45a8dc1b383d08585.ova\r\nUser OVA: https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/k8-rebuild-folder-to-folder/user-vm/Ubuntu18.04.5.ova",
+        "release_tag": "v0.1.1",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
-        "release_date": "2021-02-08T10:10:36Z",
-        "release_name": "v0.0.3",
-        "release_tag": "v0.0.3",
-        "repo_repo": "gp-sharepoint-plugins",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+        "hash": "b2c383068f7a9eb0f6c94d104e6c324052f8af3b",
+        "hash_short": "b2c3830",
+        "release_date": "2021-01-26T09:24:51Z",
+        "release_name": "The initial docker version of k8-rebuild folder to folder.",
+        "release_tag": "v0.1.0",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
-        "release_date": "2021-02-08T09:56:27Z",
-        "release_name": "v0.0.2",
-        "release_tag": "v0.0.2",
-        "repo_repo": "gp-sharepoint-plugins",
-        "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
+        "hash": "0d97cbe34d1464acb75fd56a0973c65cca5f282a",
+        "hash_short": "0d97cbe",
+        "release_date": "2021-02-15T11:05:13Z",
+        "release_name": "",
+        "release_tag": "v0.1.6",
+        "repo_name": "vmware-scripts",
+        "repo_url": "https://github.com/k8-proxy/vmware-scripts"
+    },
+    {
+        "hash": "4aaf5891ec9c1a9a52818ca1c1c8f61d51595450",
+        "hash_short": "4aaf589",
+        "release_date": "2021-02-09T13:11:48Z",
+        "release_name": "",
+        "release_tag": "v0.1.5",
+        "repo_name": "vmware-scripts",
+        "repo_url": "https://github.com/k8-proxy/vmware-scripts"
+    },
+    {
+        "hash": "1b4a446326662f0a27ccaa616d7c82395c0a219f",
+        "hash_short": "1b4a446",
+        "release_date": "2021-01-28T09:55:28Z",
+        "release_name": "fix bug in icap test scripts.\r\nupdate packer template to generate ova when create_ova variable is true.",
+        "release_tag": "v0.1.4",
+        "repo_name": "vmware-scripts",
+        "repo_url": "https://github.com/k8-proxy/vmware-scripts"
+    },
+    {
+        "hash": "d682c1946f2db8b15743b15eaa1c801f9dafe5a1",
+        "hash_short": "d682c19",
+        "release_date": "2021-01-19T15:34:27Z",
+        "release_name": "",
+        "release_tag": "v0.1.3",
+        "repo_name": "vmware-scripts",
+        "repo_url": "https://github.com/k8-proxy/vmware-scripts"
+    },
+    {
+        "hash": "5e31f909239b4c59159f657232bd95f880c3c229",
+        "hash_short": "5e31f90",
+        "release_date": "2021-01-19T08:24:43Z",
+        "release_name": "",
+        "release_tag": "v0.1.2",
+        "repo_name": "vmware-scripts",
+        "repo_url": "https://github.com/k8-proxy/vmware-scripts"
+    },
+    {
+        "hash": "f824f271c6ea8bb2d6501107a6f7f3a975ad97bf",
+        "hash_short": "f824f27",
+        "release_date": "2021-01-07T14:21:39Z",
+        "release_name": "Initial pre-release",
+        "release_tag": "v0.1",
+        "repo_name": "test-installation-documentation",
+        "repo_url": "https://github.com/k8-proxy/test-installation-documentation"
+    },
+    {
+        "hash": "96dfb943330ba10f071f26bcd737c6258a173b56",
+        "hash_short": "96dfb94",
+        "release_date": "2021-01-20T16:04:00Z",
+        "release_name": "Github Actions workflow for ICAP-server, proxy-rebuild, k8-rebuild and monitoring.\r\n\r\n\r\n- ICAP server packer\r\n- OVA/AMI for Monitoring with the latest improvements.\r\n- OVA/AMI for Proxy\r\n- Remove VM process",
+        "release_tag": "v0.5.2",
+        "repo_name": "GW-Releases",
+        "repo_url": "https://github.com/k8-proxy/GW-Releases"
+    },
+    {
+        "hash": "6bc5ac1ae39e57edf1e621f1926947395eddafaa",
+        "hash_short": "6bc5ac1",
+        "release_date": "2021-01-12T14:17:23Z",
+        "release_name": "Release V5.1.0 contains the following tested pieces:\r\n\r\n1.- CI/CD process to build and deploy the AMI.\r\n\r\n2.- Monitoring improvements:\r\n* Automate agent installation for each OVA\r\n* Dockerise monitoring OVA\r\n* Add Packetbeat, APM and Logstash features\r\n\r\n3.- Vmware scrips:\r\n* Integration with syslog\r\n* How long did Health Check run e.g. how long we are waiting for page.\r\n\r\n4.- AMI and OVA for File Drop(k8-rebuild)\r\n* New OVA: s3://glasswall-sow-ova/vms/SOW-REST/k8-rebuild-export-i-08e0457b0a29335ed.ova\r\n* Updated documentation: https://github.com/k8-proxy/k8-rebuild/blob/main/documentation.md#importing-file-drop-ova-to-aws",
+        "release_tag": "v0.5.1",
+        "repo_name": "GW-Releases",
+        "repo_url": "https://github.com/k8-proxy/GW-Releases"
+    },
+    {
+        "hash": "80db47c82f60311d49140253dd5418d874cb85a5",
+        "hash_short": "80db47c",
+        "release_date": "2021-02-03T14:49:50Z",
+        "release_name": "Fixes on v0.1.1:\r\n1.- Some zip files were not processed and moved directly to error folder. The reason was that the zip files were almost 200mb.\r\n2.-  Logs are improved: Log folder contains logs from files that are not processed correctly. Other log details can be found in GlasswallFileProcessingStatus.txt under each processed zip file (in both error or output folder).\r\n\r\nDeliverables:\r\nLatest File-Drop OVA: https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/SOW-REST/k8-rebuild-674a31a33552c05f684bea4f3641774ff777e673.ova - this OVA has the Geotiff to allow.\r\nDocumentation: https://github.com/k8-proxy/k8-rebuild-folder-to-folder/blob/main/README.md\r\nService OVA: https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/k8-rebuild-folder-to-folder/k8-rebuild-folder-to-folder-1f57e688e7eca0801047a1d45a8dc1b383d08585.ova\r\nUser OVA: https://glasswall-sow-ova.s3-eu-west-1.amazonaws.com/vms/k8-rebuild-folder-to-folder/user-vm/Ubuntu18.04.5.ova",
+        "release_tag": "v0.1.1",
+        "repo_name": "k8-rebuild-folder-to-folder",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild-folder-to-folder"
+    },
+    {
+        "hash": "b2c383068f7a9eb0f6c94d104e6c324052f8af3b",
+        "hash_short": "b2c3830",
+        "release_date": "2021-01-26T09:24:51Z",
+        "release_name": "The initial docker version of k8-rebuild folder to folder.",
+        "release_tag": "v0.1.0",
+        "repo_name": "k8-rebuild-folder-to-folder",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild-folder-to-folder"
+    },
+    {
+        "hash": "a112f474f1b3ebbddf15700c784dd28bcbefcf4e",
+        "hash_short": "a112f47",
+        "release_date": "2021-02-17T19:33:50Z",
+        "release_name": "",
+        "release_tag": "v0.2.1",
+        "repo_name": "icap-client",
+        "repo_url": "https://github.com/k8-proxy/icap-client"
+    },
+    {
+        "hash": "f86cc0ddf5c468fa6393d2c6cbbeb36a0f88548a",
+        "hash_short": "f86cc0d",
+        "release_date": "2021-02-17T19:17:51Z",
+        "release_name": "",
+        "release_tag": "v0.2.0",
+        "repo_name": "icap-client",
+        "repo_url": "https://github.com/k8-proxy/icap-client"
     }
 ]
