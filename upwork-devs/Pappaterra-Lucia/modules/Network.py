@@ -233,3 +233,21 @@ def group_settings_R(d, group, x=None, y=None, color=None, shape=None):
 
 	return d
 
+def group_settings_GW(d, group, x=None, y=None, color=None, shape=None):
+
+	if group == "GW-Releases":
+		d["color"] = rgb2hex(plt.cm.Pastel1(0))
+		d["shape"] = 'box'
+
+	elif group == "Repo":
+		d["color"] = rgb2hex(plt.cm.Pastel1(1))
+		d["shape"] = 'box'
+
+	elif group == "Sub_Repo":
+		d["color"] = rgb2hex(plt.cm.Pastel1(2))
+		d["shape"] = 'box'
+
+	d["fixed"] = False
+	d["physics"] = True
+
+	return d
