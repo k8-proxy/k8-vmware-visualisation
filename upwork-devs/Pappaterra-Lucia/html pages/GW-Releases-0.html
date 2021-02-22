@@ -2,54 +2,61 @@
 </html>
     <head>
         <meta charset="utf-8"/>
-        <title>Release</title>
+        <title>GW Releases</title>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
     </head>
 
     <body>
-          <p>Release</p>
-          <div id="mynetwork"> </div>
+          <p>GW Releases</p>
+          <div id="mynetwork0"> </div>
 
           <!-- Add an invisible <div> element to the document, to hold the JSON data: -->
         <div id="networkJSON-results" class="results" style="display:none"></div>
 
           <script type="text/javascript">
-            var json = $.getJSON("../data/releases_nodes_edges.json")
+
+            var json = $.getJSON("../data/gw_releases_nodes_edges.json")
               .done(function(data){
                 var data = {
                   nodes: data.nodes,
                   edges: data.edges
                 };
-            var network = new vis.Network(container, data, options);
-            });
+                var network = new vis.Network(container, data, options);
+              });
 
             var options = {
-              width: '2000px',
-              height: '1500px',
+              width: '1200px',
+              height: '900px',
               locale: 'en',
-              physics: true,
+              physics: false,
               interaction: {
-                hover:true, 
+                hover:true,
                 tooltipDelay: 300
               },
               layout: {
                 randomSeed: 1,
                 improvedLayout: true,
+                hierarchical: {
+                  enabled: true,
+                  direction: 'LR',
+                  nodeSpacing: 200,
+                  levelSeparation: 250,
+                  sortMethod: 'directed',
+                },
               },
               groups: {
+                GWReleases: {
+                },
                 Repo: {
                 },
-                Tag: {
-                },
-                Date: {
-                },
-                Description: {
+                SubRepo: {
                 },
               },
             };
-            var container = document.getElementById("mynetwork");
+
+            var container = document.getElementById("mynetwork0");
           </script>
     </body>
 </html>
