@@ -1,5 +1,14 @@
 [
     {
+        "hash": "d8b3bb3db39c7114f2a58b582746cb51ea653b0b",
+        "hash_short": "d8b3bb3",
+        "release_date": "2021-02-22T13:57:35Z",
+        "release_name": "",
+        "release_tag": "v0.5.2",
+        "repo_name": "GW-proxy",
+        "repo_url": "https://github.com/k8-proxy/GW-proxy"
+    },
+    {
         "hash": "902403ed9f9834e1b393dd05d308e514c536981b",
         "hash_short": "902403e",
         "release_date": "2021-01-08T16:40:48Z",
@@ -423,8 +432,8 @@
         "repo_url": "https://github.com/k8-proxy/icap-infrastructure"
     },
     {
-        "hash": "61ce641da6c719f83ecb50988898b1dffdebdc56",
-        "hash_short": "61ce641",
+        "hash": "82c3df98dc137c3b7095d3041d9ba57c3b8a2c6d",
+        "hash_short": "82c3df9",
         "release_date": "2021-02-15T11:04:31Z",
         "release_name": "",
         "release_tag": "v0.1.1",
@@ -439,6 +448,15 @@
         "release_tag": "v0.1.0",
         "repo_name": "gp-load-balancer",
         "repo_url": "https://github.com/k8-proxy/gp-load-balancer"
+    },
+    {
+        "hash": "34a3f777159ff566102850064d2017a6054b7591",
+        "hash_short": "34a3f77",
+        "release_date": "2021-02-22T14:23:50Z",
+        "release_name": "",
+        "release_tag": "v0.5.2",
+        "repo_name": "k8-rebuild-rest-api",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild-rest-api"
     },
     {
         "hash": "34a3f777159ff566102850064d2017a6054b7591",
@@ -540,6 +558,15 @@
         "repo_url": "https://github.com/k8-proxy/gp-sharepoint-plugins"
     },
     {
+        "hash": "ec93bc2c0d32736fb5e77936c7951499b32ba54d",
+        "hash_short": "ec93bc2",
+        "release_date": "2021-02-22T14:18:23Z",
+        "release_name": "",
+        "release_tag": "sow-v0.1",
+        "repo_name": "k8-rebuild-file-drop",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild-file-drop"
+    },
+    {
         "hash": "79b14699988edbe0fb0c64a3b2c4d4c0eb60587e",
         "hash_short": "79b1469",
         "release_date": "2021-01-19T09:50:26Z",
@@ -547,6 +574,15 @@
         "release_tag": "v0.5.0",
         "repo_name": "k8-rebuild-file-drop",
         "repo_url": "https://github.com/k8-proxy/k8-rebuild-file-drop"
+    },
+    {
+        "hash": "34a3f777159ff566102850064d2017a6054b7591",
+        "hash_short": "34a3f77",
+        "release_date": "2021-02-22T14:23:50Z",
+        "release_name": "",
+        "release_tag": "v0.5.2",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
         "hash": "34a3f777159ff566102850064d2017a6054b7591",
@@ -567,6 +603,15 @@
         "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
+        "hash": "ec93bc2c0d32736fb5e77936c7951499b32ba54d",
+        "hash_short": "ec93bc2",
+        "release_date": "2021-02-22T14:18:23Z",
+        "release_name": "",
+        "release_tag": "sow-v0.1",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
+    },
+    {
         "hash": "79b14699988edbe0fb0c64a3b2c4d4c0eb60587e",
         "hash_short": "79b1469",
         "release_date": "2021-01-19T09:50:26Z",
@@ -576,9 +621,27 @@
         "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
+        "hash": "fc542782e003b292cd5951651ba5997003f1ecad",
+        "hash_short": "fc54278",
+        "release_date": "2021-02-22T14:27:56Z",
+        "release_name": "",
+        "release_tag": "sow-v0.1",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
+    },
+    {
         "hash": "ce00c47c470529d47061ed25f4faf064e416b470",
         "hash_short": "ce00c47",
         "release_date": "2021-02-15T11:03:05Z",
+        "release_name": "",
+        "release_tag": "v0.1.2",
+        "repo_name": "k8-rebuild",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild"
+    },
+    {
+        "hash": "11be72fb5adf41d53be98fdee083446a7938b622",
+        "hash_short": "11be72f",
+        "release_date": "2021-02-22T15:30:13Z",
         "release_name": "",
         "release_tag": "v0.1.2",
         "repo_name": "k8-rebuild",
@@ -603,8 +666,8 @@
         "repo_url": "https://github.com/k8-proxy/k8-rebuild"
     },
     {
-        "hash": "0d97cbe34d1464acb75fd56a0973c65cca5f282a",
-        "hash_short": "0d97cbe",
+        "hash": "6fd4bebf6ab2eaae1a21f09b4e42ca747d0f97fd",
+        "hash_short": "6fd4beb",
         "release_date": "2021-02-15T11:05:13Z",
         "release_name": "",
         "release_tag": "v0.1.6",
@@ -673,6 +736,15 @@
         "release_tag": "v0.5.1",
         "repo_name": "GW-Releases",
         "repo_url": "https://github.com/k8-proxy/GW-Releases"
+    },
+    {
+        "hash": "11be72fb5adf41d53be98fdee083446a7938b622",
+        "hash_short": "11be72f",
+        "release_date": "2021-02-22T15:30:13Z",
+        "release_name": "",
+        "release_tag": "v0.1.2",
+        "repo_name": "k8-rebuild-folder-to-folder",
+        "repo_url": "https://github.com/k8-proxy/k8-rebuild-folder-to-folder"
     },
     {
         "hash": "80db47c82f60311d49140253dd5418d874cb85a5",
