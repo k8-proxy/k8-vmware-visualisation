@@ -10,12 +10,12 @@ from github import Github
 
 warnings.filterwarnings('ignore')
 
-bucket                                          = 'wmwaredata'
-fileName                                        = 'gw_releases.json'
-s3                                              = boto3.client('s3')
-git_token                                       = os.getenv('GIT_TOKEN')
-git_headers                                     = {'Authorization': f'token {git_token}'}
-g                                               = Github(os.getenv('GIT_TOKEN'))
+bucket                                  = 'wmwaredata'
+fileName                                = 'gw_releases.json'
+s3                                      = boto3.client('s3')
+git_token                               = os.getenv('GIT_TOKEN')
+git_headers                             = {'Authorization': f'token {git_token}'}
+g                                       = Github(os.getenv('GIT_TOKEN'))
 
 org                                     = g.get_organization("k8-proxy")
 all_repos                               = org.get_repos()
