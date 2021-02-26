@@ -10,137 +10,181 @@ from github import Github
 
 warnings.filterwarnings('ignore')
 
-bucket                                          = 'wmwaredata'
-fileName                                        = 'gw_releases.json'
-s3                                              = boto3.client('s3')
-git_token                                       = os.getenv('GIT_TOKEN')
-git_headers                                     = {'Authorization': f'token {git_token}'}
-g                                               = Github(os.getenv('GIT_TOKEN'))
+bucket                                  = 'wmwaredata'
+fileName                                = 'gw_releases.json'
+s3                                      = boto3.client('s3')
+git_token                               = os.getenv('GIT_TOKEN')
+git_headers                             = {'Authorization': f'token {git_token}'}
+g                                       = Github(os.getenv('GIT_TOKEN'))
 
-class GetRelease():
+org                                     = g.get_organization("k8-proxy")
+all_repos                               = org.get_repos()
+onerepo                                 = ['GW-Releases']
 
-    def releases(self):
+# Getting all repos in the k8-proxy organisation
+allrepos                                = []
+for repo in all_repos:
+  myrepo                                = repo.id, repo.name, repo.html_url
+  allrepos.append(myrepo)
+  k8repos                               = pd.DataFrame(allrepos)
+  k8repos.columns                       = ['id', 'name', 'repo_url']
 
-        # Listing repos
+# Get content function
+def get_content(repos):
+  data                                  = []
+  for repo in repos:
+    url                                 = f'https://api.github.com/repos/k8-proxy/{repo}/contents'
+    req                                 = requests.get(url, headers=git_headers).json()
+    temp_data                           = json_normalize(req, max_level=1)
+    temp_df                             = pd.DataFrame(temp_data)
+    data.append(temp_df )
+    content                             = pd.concat(data, ignore_index=True)
 
-        org                                     = g.get_organization("k8-proxy")
-        all_repos                               = org.get_repos()
-        repos                                   = []
+  # Matching repos in the content with the known k8-proxy repos to filter out garbage
+  content                               = content[['path','sha', 'html_url', 'url']]
+  content['repo_url']                   = content.path.map(k8repos.set_index('name')['repo_url'])
+  content                               = content.dropna()
+  content.reset_index(drop              = True, inplace=True)
+  return content
 
-        for repo in all_repos:
-          myrepo                                = repo.id, repo.name, repo.html_url
-          repos.append(myrepo)
+# Get releases function
+def get_releases(repos):
+  rdata                                 = []
+  for repo in repos:
+    url                                 = f'https://api.github.com/repos/k8-proxy/{repo}/releases'
+    req                                 = requests.get(url, headers=git_headers).json()
+    temp_data                           = json_normalize(req, max_level=1)
+    temp_df                             = pd.DataFrame(temp_data)
+    rdata.append(temp_df)
 
-          df1                                   = pd.DataFrame(repos)
-          df1.columns                           = ['id', 'name', 'repo_url']
+  releases                              = pd.concat(rdata, ignore_index=True)
+  releases                              = releases[['html_url','tag_name', 'published_at','body', 'zipball_url']]
+  return releases
 
-        # Getting release data
-        url                                     = f'https://api.github.com/repos/k8-proxy/GW-Releases/contents'
-        res                                     = requests.get(url, headers=git_headers).json()
-        data1                                   = json_normalize(res, max_level=1)
-        dft                                     = pd.DataFrame(data1)
-        dft                                     = dft[['path','sha', 'html_url']]
+# Get commits function
+def get_commits(repos):
+  cdata                                 = []
+  for repo in repos:
+    url                                 = f'https://api.github.com/repos/k8-proxy/{repo}/commits'
+    req                                 = requests.get(url, headers=git_headers).json()
+    temp_data                           = json_normalize(req, max_level=2)
+    temp_df                             = pd.DataFrame(temp_data)
+    cdata.append(temp_data)
+
+  commits                               = pd.concat(cdata, ignore_index=True)
+  commits                               = commits[['sha', 'commit.message']]
+  commits                               = commits .rename({'commit.message':'message'}, axis=1)
+  return commits
+
+# Get tags function
+def get_tags(repos):
+  tdata                                 =  []
+  for repo in repos:
+    url                                 = f'https://api.github.com/repos/k8-proxy/{repo}/tags'
+    req                                 = requests.get(url, headers=git_headers).json()
+    temp_data                           = json_normalize(req, max_level=2)
+    temp_df                             = pd.DataFrame(temp_data)
+    tdata.append(temp_data)
+
+  tags                                  = pd.concat(tdata, ignore_index=True)
+  tags                                  =  tags.rename({'commit.sha':'hash'}, axis=1)
+  tags                                  =  tags.rename({'commit.url':'commit_url'}, axis=1)
+  tags                                  =  tags.rename({'name':'version'}, axis=1)
+  tags['repo_name']                     = 'GW-Releases'
+  tags['repo_url']                      = 'https://github.com/k8-proxy/GW-Releases'
+  tags['hash_short']                    = tags['hash'].str[:7]
+  tags                                  =  tags[['repo_name','hash', 'commit_url','repo_url', 'hash_short']]
+  tags                                  = tags.drop_duplicates(subset='repo_name')
+  return tags
 
 
-        dft['repo_url']                         = dft.path.map(df1.set_index('name')['repo_url'])
-        dft                                     = dft.dropna()
-        dft.reset_index(drop                    = True, inplace=True)
-        dft                                     = dft.rename({'path':'repo_name'}, axis=1)
-        dft                                     = dft.rename({'sha':'hash'}, axis=1)
-        dft                                     = dft.rename({'html_url':'commit_url'}, axis=1)
-        dft['hash_short']                       = dft['hash'].str[:7]
+# Get content function
+def create_json():
+    gw_cont                             = get_content(onerepo)
+    gw_cont                             = gw_cont[['path','sha','repo_url', 'html_url']]
+    gw_cont                             = gw_cont.rename({'path':'repo_name'}, axis=1)
+    gw_cont                             = gw_cont.rename({'sha':'hash'}, axis=1)
+    gw_cont                             = gw_cont.rename({'html_url':'commit_url'}, axis=1)
+    gw_cont['hash_short']               = gw_cont['hash'].str[:7]
+    # Extracting only the repo names to create a list
+    content_repos                       = gw_cont['repo_name'].tolist()
+    repos                               = content_repos + onerepo
+    g_com                               = get_tags(onerepo)
+    # Add GW-releases df to the wanted repos
+    gw_cont                             = pd.concat([gw_cont, g_com], ignore_index=True)
+    gw_cont                             = gw_cont[['repo_name','hash', 'commit_url','repo_url', 'hash_short']]
+    releases                            = get_releases(repos)
+    # Select out only the required repos
+    gw_cont['join']                     = 1
+    releases['join']                    = 1
+    wanted_rel                          = gw_cont.merge(releases, on='join').drop('join', axis=1)
+    releases.drop('join', axis          = 1, inplace=True)
+    wanted_rel['match']                 = [x[0] in x[1] for x in zip(wanted_rel['repo_name'], wanted_rel['html_url'])]
+    wanted_rel                          = wanted_rel.loc[wanted_rel['match'] == True]
+    wanted_rel.reset_index(drop         = True, inplace=True)
+    wanted_rel                          = wanted_rel[['repo_name','repo_url','tag_name','body', 'published_at','hash','hash_short','commit_url']]
+    wanted_rel                          = wanted_rel.rename({'tag_name':'version'}, axis=1)
+    wanted_rel                          = wanted_rel.rename({'published_at':'release_date'}, axis=1)
+    # Pick the lates release
+    wanted_rel                          = wanted_rel.drop_duplicates(subset='repo_name')
+    wanted_rel.reset_index(drop         =  True, inplace=True)
+    commits                             = get_commits(repos)
+    commits                             = commits .rename({'sha':'hash'}, axis=1)
+    main_releases                       = pd.merge(wanted_rel, commits, on='hash' , how="left")
+    # Combining release notes with commit messages
+    main_releases                       = main_releases.fillna('')
+    main_releases['join']               = ' '
+    main_releases['release_notes']      =  main_releases["message"]+ main_releases['join'] + main_releases["body"]
 
-        myrepos                                 = dft['repo_name']
-        nurepo                                  = dft[['repo_name']]
-        repos                                   = myrepos.tolist()
+    main_releases.drop(['body', 'message', 'join'], axis=1, inplace=True)
 
-        rdata                                   =   []
-        for repo in repos:
-          rurl                                  = f'https://api.github.com/repos/k8-proxy/{repo}/releases'
-          resn                                  = requests.get(rurl, headers=git_headers).json()
-          data2                                 = json_normalize(resn, max_level=1)
-          temp_dfs                              = pd.DataFrame(data2)
-          rdata.append(temp_dfs )
-          df3                                   = pd.concat(rdata, ignore_index=True)
+    subdata                             = get_content(content_repos)
+    subdata                             = subdata.rename({'path':'sub_repo_name'}, axis=1)
+    subdata                             = subdata.rename({'sha':'sub_hash'}, axis=1)
+    subdata                             = subdata.rename({'html_url':'sub_commit_url'}, axis=1)
+    subdata                             = subdata.rename({'repo_url':'sub_repo_url'}, axis=1)
+    subdata['sub_hash_short']           = subdata['sub_hash'].str[:7]
+    sub_repos                           = subdata['sub_repo_name'].tolist()
+    releases                            = get_releases(sub_repos)
+    # Select out only the required repos
+    subdata['join']                     = 1
+    releases['join']                    = 1
+    wanted_rel                          = subdata.merge(releases, on='join').drop('join', axis=1)
+    releases.drop('join', axis          = 1, inplace=True)
+    wanted_rel['match']                 = [x[0] in x[1] for x in zip(wanted_rel['sub_repo_name'], wanted_rel['html_url'])]
+    wanted_rel                          = wanted_rel.loc[wanted_rel['match'] == True]
+    wanted_rel.reset_index(drop         = True, inplace=True)
+    wanted_rel                          = wanted_rel[['sub_repo_name','sub_repo_url','tag_name','body', 'published_at','sub_hash','sub_hash_short','sub_commit_url','url']]
+    wanted_rel                          = wanted_rel.rename({'tag_name':'sub_version'}, axis=1)
+    wanted_rel                          = wanted_rel.rename({'published_at':'sub_release_date'}, axis=1)
+    commits                             = get_commits(sub_repos)
+    commits                             = commits .rename({'sha':'sub_hash'}, axis=1)
+    sub_releases                        = pd.merge(wanted_rel, commits, on='sub_hash' , how="left")
+    sub_releases                        = sub_releases.drop_duplicates(subset='sub_repo_name')
+    sub_releases.reset_index(drop       = True, inplace=True)
+    # Combining release notes with commit messages
+    sub_releases                        = sub_releases.fillna('')
+    sub_releases['join']                = ' '
+    sub_releases['sub_release_notes']   = sub_releases["message"]+ sub_releases['join'] + sub_releases["body"]
 
-        df3                                     = df3[['html_url','tag_name', 'published_at','body', 'zipball_url']]
-        df1['join']                             = 1
-        df3['join']                             = 1
-        df                                      = df1.merge(df3, on='join').drop('join', axis=1)
+    sub_releases.drop(['body', 'message', 'join'], axis=1, inplace=True)
 
-        df3.drop('join', axis=1, inplace=True)
+    nurepo                               = gw_cont[['repo_name']]
+    nurepo['join']                       = 1
+    sub_releases['join']                 = 1
+    jo                                   = nurepo.merge(sub_releases, on='join').drop('join', axis=1)
+    sub_releases.drop('join', axis       = 1, inplace=True)
+    jo['match']                          = [x[0] in x[1] for x in zip(jo['repo_name'], jo['url'])]
+    jo                                   = jo.loc[jo['match'] == True]
+    jo.reset_index(drop                  = True, inplace=True)
+    jo                                   = jo[['repo_name','sub_repo_name','sub_repo_url','sub_version','sub_hash','sub_hash_short','sub_release_date', 'sub_commit_url', 'sub_release_notes']]
+    final                            	 = pd.merge(jo, main_releases, on='repo_name', how='right')
+	
+	  #Creating a JSON file
+    myjson                              = final.to_dict(orient ='records')
+    uploads                             = bytes(json.dumps(myjson, indent=4, sort_keys=True, default=str).encode('UTF-8'))
 
-        df['match']                             = [x[0] in x[1] for x in zip(df['name'], df['html_url'])]
-        df                                      = df.loc[df['match'] == True]
+    # Uploading JSON file to s3 bucket
 
-        df.reset_index(drop=True, inplace=True)
+    s3.put_object(Bucket=bucket, Key=fileName, Body=uploads)
 
-        df                                      = df[['name','repo_url','body','tag_name', 'published_at','zipball_url']]
-        df                                      = df.rename({'name':'repo_name'}, axis=1)
-        df                                      = df.rename({'body':'release_name'}, axis=1)
-        df                                      = df.rename({'tag_name':'release_tag'}, axis=1)
-        df                                      = df.rename({'published_at':'release_date'}, axis=1)
-
-        # tags
-        tdata                                   =   []
-        for repo in repos:
-          tag_url                               = f'https://api.github.com/repos/k8-proxy/{repo}/tags'
-          t_url                                 = requests.get(tag_url, headers=git_headers).json()
-          t_data                                = json_normalize(t_url, max_level=1)
-          temp_tdf                              = pd.DataFrame(t_data)
-          tdata.append(temp_tdf )
-
-          tdf                                   = pd.concat(tdata, ignore_index=True)
-
-        tdf                                     = tdf[['name','commit.sha','zipball_url']]
-        df['hash']                              = df.zipball_url.map(tdf.set_index('zipball_url')['commit.sha'])
-        df                                      = df.dropna()
-
-        df.reset_index(drop=True, inplace=True)
-
-        df                                      = df.drop('zipball_url', 1)
-        dft                                     = dft[['hash','hash_short', 'commit_url']]
-        nudf                                    = pd.merge(df, dft, on='hash')
-        nudf                                    = nudf.drop_duplicates(subset='repo_name')
-
-        data                                    = []
-        for repo in repos:
-          myurl                                 = f'https://api.github.com/repos/k8-proxy/{repo}/contents'
-          req                                   = requests.get(myurl, headers=git_headers).json()
-          data1                                 = json_normalize(req, max_level=1)
-          temp_df                               = pd.DataFrame(data1)
-          data.append(temp_df )
-
-          dfg                                   = pd.concat(data, ignore_index=True)
-
-        dfg                                     = dfg[['path','sha', 'html_url', 'url']]
-        dfg['repo_url']                         = dfg.path.map(df1.set_index('name')['repo_url'])
-        dfg                                     = dfg.dropna()
-        dfg.reset_index(drop  = True)
-
-        nurepo['join']                          = 1
-        dfg['join']                             = 1
-        jo                                      = nurepo.merge(dfg, on='join').drop('join', axis=1)
-
-        dfg.drop('join', axis=1, inplace=True)
-
-        jo['match']                             = [x[0] in x[1] for x in zip(jo['repo_name'], jo['url'])]
-        jo                                      = jo.loc[jo['match'] == True]
-        jo.reset_index(drop=True, inplace=True)
-
-        jo                                      = jo.rename({'sha':'sub_hash'}, axis=1)
-        jo                                      = jo.rename({'path':'sub_name'}, axis=1)
-        jo                                      = jo.rename({'html_url':'sub_commit_url'}, axis=1)
-        jo                                      = jo.rename({'repo_url':'sub_repo_commit_url'}, axis=1)
-        jo                                      = jo[['repo_name','sub_name','sub_hash','sub_commit_url', 'sub_repo_commit_url']]
-        jo['sub_hash_short']                    = jo['sub_hash'].str[:7]
-
-        final                                   = pd.merge(jo, nudf, on='repo_name', how='right')
-
-        # Creating a JSON file
-        myjson                                  = final.to_dict(orient ='records')
-        uploads                                 = bytes(json.dumps(myjson, indent=4, sort_keys=True, default=str).encode('UTF-8'))
-
-        # Uploading JSON file to s3 bucket
-
-        s3.put_object(Bucket=bucket, Key=fileName, Body=uploads)
