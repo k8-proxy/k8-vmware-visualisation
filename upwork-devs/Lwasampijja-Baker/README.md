@@ -28,7 +28,7 @@ Files:
 ### 4. Create Power presentation from GW-Releases Data - Lambda Function
 The following scripts creates the a powerpoint presentation from the GW-Releases JSON file and stores it in an S3 bucket. The function is triggered everytime a new JSON file is created.
 
-Output JSON: https://gw-data-vis.s3.us-east-2.amazonaws.com/gw_releases.pptx
+Output File: https://gw-data-vis.s3.us-east-2.amazonaws.com/gw_releases.pptx
 
 Files: 
 - make_ppt.py
